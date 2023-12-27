@@ -1,2 +1,7 @@
+http://example.com/About/index.html
+http://example.com/Comments/index.html
+http://example.com/Link/index.html
+http://example.com/Live/index.html
+http://example.com/Blog/index.html
 http://example.com/2023/12/08/hello-world/
 http://example.com/
