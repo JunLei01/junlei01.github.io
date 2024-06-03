@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://example.com/2024/05/29/Support-Vector-Machine/</loc>
+    <loc>http://junlei-zhou.com/2024/05/29/Support-Vector-Machine/</loc>
     
     <lastmod>2024-06-03</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/2023/12/27/markov-process/</loc>
+    <loc>http://junlei-zhou.com/2023/12/27/markov-process/</loc>
     
     <lastmod>2024-01-17</lastmod>
     
@@ -20,7 +20,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/Blog/index.html</loc>
+    <loc>http://junlei-zhou.com/Blog/index.html</loc>
     
     <lastmod>2023-12-27</lastmod>
     
@@ -29,7 +29,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/About/index.html</loc>
+    <loc>http://junlei-zhou.com/About/index.html</loc>
     
     <lastmod>2023-12-27</lastmod>
     
@@ -38,7 +38,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/Comments/index.html</loc>
+    <loc>http://junlei-zhou.com/Comments/index.html</loc>
     
     <lastmod>2023-12-27</lastmod>
     
@@ -47,7 +47,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/Link/index.html</loc>
+    <loc>http://junlei-zhou.com/Link/index.html</loc>
     
     <lastmod>2023-12-27</lastmod>
     
@@ -56,7 +56,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/Live/index.html</loc>
+    <loc>http://junlei-zhou.com/Live/index.html</loc>
     
     <lastmod>2023-12-27</lastmod>
     
@@ -65,7 +65,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/2023/12/08/hello-world/</loc>
+    <loc>http://junlei-zhou.com/2023/12/08/hello-world/</loc>
     
     <lastmod>2023-12-08</lastmod>
     
@@ -75,7 +75,7 @@
   
 
   <url>
-    <loc>http://example.com/</loc>
+    <loc>http://junlei-zhou.com/</loc>
     <lastmod>2024-06-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -83,7 +83,7 @@
 
   
   <url>
-    <loc>http://example.com/tags/Machine-Learning-Supervised-machine-learning-Convex-optimization%EF%BC%8C-Dural-Problem/</loc>
+    <loc>http://junlei-zhou.com/tags/Machine-Learning-Supervised-machine-learning-Convex-optimization%EF%BC%8C-Dural-Problem/</loc>
     <lastmod>2024-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

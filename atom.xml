@@ -3,11 +3,11 @@
   <title>Welcome to Junlei&#39;s word!</title>
   
   
-  <link href="http://example.com/atom.xml" rel="self"/>
+  <link href="http://junlei-zhou.com/atom.xml" rel="self"/>
   
-  <link href="http://example.com/"/>
+  <link href="http://junlei-zhou.com/"/>
   <updated>2024-06-03T02:25:34.198Z</updated>
-  <id>http://example.com/</id>
+  <id>http://junlei-zhou.com/</id>
   
   <author>
     <name>坚竹韧周</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Support-Vector-Machine</title>
-    <link href="http://example.com/2024/05/29/Support-Vector-Machine/"/>
-    <id>http://example.com/2024/05/29/Support-Vector-Machine/</id>
+    <link href="http://junlei-zhou.com/2024/05/29/Support-Vector-Machine/"/>
+    <id>http://junlei-zhou.com/2024/05/29/Support-Vector-Machine/</id>
     <published>2024-05-29T07:56:16.000Z</published>
     <updated>2024-06-03T02:25:34.198Z</updated>
     
@@ -37,14 +37,14 @@ Machine)&lt;/h1&gt;
     
     
     
-    <category term="Machine Learning, Supervised machine learning, Convex optimization， Dural Problem" scheme="http://example.com/tags/Machine-Learning-Supervised-machine-learning-Convex-optimization%EF%BC%8C-Dural-Problem/"/>
+    <category term="Machine Learning, Supervised machine learning, Convex optimization， Dural Problem" scheme="http://junlei-zhou.com/tags/Machine-Learning-Supervised-machine-learning-Convex-optimization%EF%BC%8C-Dural-Problem/"/>
     
   </entry>
   
   <entry>
     <title>markov_process</title>
-    <link href="http://example.com/2023/12/27/markov-process/"/>
-    <id>http://example.com/2023/12/27/markov-process/</id>
+    <link href="http://junlei-zhou.com/2023/12/27/markov-process/"/>
+    <id>http://junlei-zhou.com/2023/12/27/markov-process/</id>
     <published>2023-12-27T09:33:42.000Z</published>
     <updated>2024-01-17T10:28:21.516Z</updated>
     
@@ -65,8 +65,8 @@ Probability)&lt;/h2&gt;
   
   <entry>
     <title>Hello World</title>
-    <link href="http://example.com/2023/12/08/hello-world/"/>
-    <id>http://example.com/2023/12/08/hello-world/</id>
+    <link href="http://junlei-zhou.com/2023/12/08/hello-world/"/>
+    <id>http://junlei-zhou.com/2023/12/08/hello-world/</id>
     <published>2023-12-08T12:50:07.908Z</published>
     <updated>2023-12-08T12:50:07.908Z</updated>
     
