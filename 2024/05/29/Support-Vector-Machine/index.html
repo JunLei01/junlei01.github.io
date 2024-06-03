@@ -1,0 +1,202 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Support-Vector-Machine | Welcome to Junlei's word!</title><meta name="author" content="坚竹韧周"><meta name="copyright" content="坚竹韧周"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="支持向量机 (Support Vector Machine)简介支持向量机是无监督机器学习中一个经典的算法，具有完善的数学理论和推理证明。本文将从SVM问题定义，模型建立，数学推理对SVM进行详细的论述。 线性可分 (Linear S)问题定义在一个样本空间中，给定训练样本集，在样本空间中能够找到一个划分超平面，将不同类别的样本区分开。   图1：线性可分，存在多个超平面将两类训练样本分开  结论">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Support-Vector-Machine">
+<meta property="og:url" content="http://example.com/2024/05/29/Support-Vector-Machine/index.html">
+<meta property="og:site_name" content="Welcome to Junlei&#39;s word!">
+<meta property="og:description" content="支持向量机 (Support Vector Machine)简介支持向量机是无监督机器学习中一个经典的算法，具有完善的数学理论和推理证明。本文将从SVM问题定义，模型建立，数学推理对SVM进行详细的论述。 线性可分 (Linear S)问题定义在一个样本空间中，给定训练样本集，在样本空间中能够找到一个划分超平面，将不同类别的样本区分开。   图1：线性可分，存在多个超平面将两类训练样本分开  结论">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/avatar.jpg">
+<meta property="article:published_time" content="2024-05-29T07:56:16.000Z">
+<meta property="article:modified_time" content="2024-06-03T01:35:23.928Z">
+<meta property="article:author" content="坚竹韧周">
+<meta property="article:tag" content="Machine Learning, Supervised machine learning, Convex optimization， Dural Problem">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/avatar.jpg"><link rel="shortcut icon" href="/img/URL_LOGO.png"><link rel="canonical" href="http://example.com/2024/05/29/Support-Vector-Machine/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Error',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Support-Vector-Machine',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-06-03 09:35:23'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.0.0"><link rel="alternate" href="/atom.xml" title="Welcome to Junlei's word!" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> Blog</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-blog"></i><span> Library</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Live</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/movies/"><i class="fa-fw fa fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fa fa-gamepad"></i><span> Game</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fa fa-paper-plane"></i><span> Comments</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Welcome to Junlei's word!"><span class="site-name">Welcome to Junlei's word!</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> Blog</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-blog"></i><span> Library</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Live</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/movies/"><i class="fa-fw fa fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fa fa-gamepad"></i><span> Game</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fa fa-paper-plane"></i><span> Comments</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Support-Vector-Machine</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-05-29T07:56:16.000Z" title="Created 2024-05-29 15:56:16">2024-05-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-06-03T01:35:23.928Z" title="Updated 2024-06-03 09:35:23">2024-06-03</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Support-Vector-Machine"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="支持向量机-Support-Vector-Machine"><a href="#支持向量机-Support-Vector-Machine" class="headerlink" title="支持向量机 (Support Vector Machine)"></a>支持向量机 (Support Vector Machine)</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>支持向量机是无监督机器学习中一个经典的算法，具有完善的数学理论和推理证明。本文将从SVM问题定义，模型建立，数学推理对SVM进行详细的论述。</p>
+<h2 id="线性可分-Linear-S"><a href="#线性可分-Linear-S" class="headerlink" title="线性可分 (Linear S)"></a>线性可分 (Linear S)</h2><h4 id="问题定义"><a href="#问题定义" class="headerlink" title="问题定义"></a>问题定义</h4><p>在一个样本空间中，给定训练样本集，在样本空间中能够找到一个划分超平面，将不同类别的样本区分开。</p>
+<img src="C:\Users\S\AppData\Roaming\Typora\typora-user-images\image-20240530093244843.png" alt="image-20240530093244843" style="zoom:50%;" />
+
+<center><p>图1：线性可分，存在多个超平面将两类训练样本分开</p></center>
+
+<p><strong>结论1：在一个空间中，如果存在一条直线能够划分两个点集，那么将存在无数条直线能够划分这两个点集。(证明见附录)</strong></p>
+<h4 id="数学定义"><a href="#数学定义" class="headerlink" title="数学定义"></a><strong>数学定义</strong></h4><p>$D_1$和 $D_2$ 是 n 维欧氏空间中的两个点集。如果存在 n 维向量 $w$ 和实数 $b$ 使得所有属于 $D_0$ 的点 $x_i$ 都有 $wx_i+b&gt;0$, 而对于所有属于 $D_1$ 的点 $x_j$ 则有 $wx_j+b&lt;0$，则我们称 $D_0$ 和 $D_1$ 线性可分。</p>
+<h2 id="SVM解决线性问题"><a href="#SVM解决线性问题" class="headerlink" title="SVM解决线性问题"></a>SVM解决线性问题</h2><h4 id="线性问题定义"><a href="#线性问题定义" class="headerlink" title="线性问题定义"></a>线性问题定义</h4><p>由 <strong>结论1</strong> 可得，对于一个线性可分的问题，存在无数条满足要求的直线，那么究竟哪一条直线是最好的？</p>
+<img src="C:\Users\S\AppData\Roaming\Typora\typora-user-images\image-20240530104549138.png" alt="image-20240530104549138" style="zoom:50%;" />
+
+<center><p>图2：线性可分，存在多个超平面将两类训练样本分开</p></center>
+
+<p>直观上看，应该去找位于两类训练样本“正中间”的划分超平面，即图中红色的直线，因为该划分超平面对训练样本局部扰动的“容忍”性最好，例如，由于训练集的局限性或噪声的因素，训练集外的样本可能比图中的训练样本更接近两个类的分隔界，这将使许多划分超平面出现错误，而红色的超平面受影响最小，换言之，这个划分超平面所产生的分类结果是最鲁棒的，对未见示例的泛化能力最强。</p>
+<p><strong>问题1：我们怎样定义这样一个最好的直线？</strong>  答：为每条直线定义一个性能指标，将每条直线平移直至该直线能够插到最边缘的样本点，如下图所示：</p>
+<img src="C:\Users\S\AppData\Roaming\Typora\typora-user-images\image-20240530112035809.png" alt="image-20240530112035809" style="zoom:50%;" />
+
+<center><p>图3：支持向量与间隔</p></center>
+
+<p>如图3所示，我们做如下定义：</p>
+<p>$r$ : 间隔(Margin)，将平行线平移直至插到支持向量的距离</p>
+<p>$x$ : 训练集中的样本</p>
+<p>$y$ : 训练集中样本对应的标签</p>
+<p>$D&#x3D;{(x_1,y_1),(x_2,y_2),\dots,(x_n,y_n) },y_i\in{-1,+1}$ : 训练样本集</p>
+<p>$w^Tx+b&#x3D;0$ : 超平面(Hypeplane)，即上文中提到的直线，在二维空间中是一条直线，在高维空间中，则是超平面。</p>
+<h4 id="SVM最优化"><a href="#SVM最优化" class="headerlink" title="SVM最优化"></a>SVM最优化</h4><h2 id="SVM解决非线性问题"><a href="#SVM解决非线性问题" class="headerlink" title="SVM解决非线性问题"></a>SVM解决非线性问题</h2><h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><h4 id="结论1证明："><a href="#结论1证明：" class="headerlink" title="结论1证明："></a>结论1证明：</h4><h5 id="二维平面上的证明"><a href="#二维平面上的证明" class="headerlink" title="二维平面上的证明"></a>二维平面上的证明</h5><p>假设我们有两个点集 $A$ 和 $B$，并且这两个点集是线性可分的。这意味着存在一条直线可以将这两个点集分开。为了证明存在无数条直线能够划分这两个点集，我们可以如下进行证明：</p>
+<ol>
+<li><p><strong>存在一条直线</strong>：假设存在一条直线 $L$ 可以将点集 $A$ 和 $B$ 分开。直线 $L$ 可以表示为：<br>$$<br>𝑦&#x3D;k𝑥+b<br>$$<br>其中 $k$ 是斜率，$b$ 是截距。</p>
+</li>
+<li><p><strong>平行直线的性质</strong>：对于任何一个固定的斜率 𝑚<em>m</em>，不同的截距 𝑐<em>c</em> 会产生不同的平行直线。设我们有另一条直线 𝐿′<em>L</em>′ 其方程为：<br>$$<br>𝑦&#x3D;𝑚𝑥+b^′<br>$$<br>其中 $b’\neq b$，则 $L’$ 与 $L$ 平行。</p>
+</li>
+<li><p><strong>平行直线的分离能力</strong>：由于 $A$ 和 $B$ 是线性可分的，这意味着可以找到一个间隔  $\epsilon$ 使得在直线  $L$的一侧存在一个空隙，其中没有任何点在此区域。换句话说，我们可以调整 $b$ 的值，使得新的直线 $L’$ 依然可以将 $A$ 和 $B$ 分开。</p>
+</li>
+<li><p><strong>无数条平行直线</strong>：由于 $b$ 可以在实数范围内任意取值，因此存在无数个不同的 $b$ 值，这意味着存在无数条平行直线可以将 $A$ 和 $B$ 分开。</p>
+</li>
+<li><p><strong>非平行直线</strong>：除了平行直线之外，我们还可以选择不同的斜率 $k’$。对任何新的斜率 $k’$，只要新的直线方程能够满足分离点集的条件，我们就可以调整其截距 $b’$ 使得新的直线 $y&#x3D;k’x+b’$ 依然可以将 $A$ 和 $B$ 分开。</p>
+</li>
+</ol>
+<h5 id="高维空间的推广"><a href="#高维空间的推广" class="headerlink" title="高维空间的推广"></a>高维空间的推广</h5><p>在高维空间中，能够分离点集的“直线”实际上是一个超平面。假设我们有两个点集 $A$ 和 $B$，并且它们是线性可分的，即存在一个超平面 $H$ 可以将它们分开。超平面方程可以表示为：<br>$$<br>w\cdot x+b&#x3D;0<br>$$<br>其中 $w$ 是法向量，$b$ 是偏置项。</p>
+<ol>
+<li><strong>存在一个超平面</strong>：假设存在一个超平面 $H$ 可以将 $A$ 和 $B$ 分开。</li>
+<li><strong>平行超平面</strong>：对于任何固定的法向量 $w$，不同的偏置 $b$ 会产生不同的平行超平面。</li>
+<li><strong>无数个平行超平面</strong>：由于 $b$ 可以在实数范围内任意取值，因此存在无数个不同的 $b$ 值，这意味着存在无数个平行超平面可以将 𝐴<em>A</em> 和 𝐵<em>B</em> 分开。</li>
+<li><strong>非平行超平面</strong>：我们还可以选择不同的法向量 $w’$。对于任何新的法向量 $w’$，只要新的超平面方程能够满足分离点集的条件，我们就可以调整其偏置 $b$ 使得新的超平面 $w’\cdot x+b’&#x3D;0$ 依然可以将 $A$ 和 $B$ 分开。</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">坚竹韧周</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/2024/05/29/Support-Vector-Machine/">http://example.com/2024/05/29/Support-Vector-Machine/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Machine-Learning-Supervised-machine-learning-Convex-optimization%EF%BC%8C-Dural-Problem/">Machine Learning, Supervised machine learning, Convex optimization， Dural Problem</a></div><div class="post_share"><div class="social-share" data-image="/img/avatar.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/12/27/markov-process/" title="markov_process"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next</div><div class="next_info">markov_process</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">坚竹韧周</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/JunLei01"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/JunLei01" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:zjunlei1225@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA-Support-Vector-Machine"><span class="toc-number">1.</span> <span class="toc-text">支持向量机 (Support Vector Machine)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%8F%AF%E5%88%86-Linear-S"><span class="toc-number">1.2.</span> <span class="toc-text">线性可分 (Linear S)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E5%AE%9A%E4%B9%89"><span class="toc-number">1.2.0.1.</span> <span class="toc-text">问题定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E5%AE%9A%E4%B9%89"><span class="toc-number">1.2.0.2.</span> <span class="toc-text">数学定义</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SVM%E8%A7%A3%E5%86%B3%E7%BA%BF%E6%80%A7%E9%97%AE%E9%A2%98"><span class="toc-number">1.3.</span> <span class="toc-text">SVM解决线性问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E9%97%AE%E9%A2%98%E5%AE%9A%E4%B9%89"><span class="toc-number">1.3.0.1.</span> <span class="toc-text">线性问题定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SVM%E6%9C%80%E4%BC%98%E5%8C%96"><span class="toc-number">1.3.0.2.</span> <span class="toc-text">SVM最优化</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SVM%E8%A7%A3%E5%86%B3%E9%9D%9E%E7%BA%BF%E6%80%A7%E9%97%AE%E9%A2%98"><span class="toc-number">1.4.</span> <span class="toc-text">SVM解决非线性问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%84%E5%BD%95"><span class="toc-number">1.5.</span> <span class="toc-text">附录</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA1%E8%AF%81%E6%98%8E%EF%BC%9A"><span class="toc-number">1.5.0.1.</span> <span class="toc-text">结论1证明：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E7%BB%B4%E5%B9%B3%E9%9D%A2%E4%B8%8A%E7%9A%84%E8%AF%81%E6%98%8E"><span class="toc-number">1.5.0.1.1.</span> <span class="toc-text">二维平面上的证明</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%AB%98%E7%BB%B4%E7%A9%BA%E9%97%B4%E7%9A%84%E6%8E%A8%E5%B9%BF"><span class="toc-number">1.5.0.1.2.</span> <span class="toc-text">高维空间的推广</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/05/29/Support-Vector-Machine/" title="Support-Vector-Machine">Support-Vector-Machine</a><time datetime="2024-05-29T07:56:16.000Z" title="Created 2024-05-29 15:56:16">2024-05-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/27/markov-process/" title="markov_process">markov_process</a><time datetime="2023-12-27T09:33:42.000Z" title="Created 2023-12-27 17:33:42">2023-12-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/08/hello-world/" title="Hello World">Hello World</a><time datetime="2023-12-08T12:50:07.908Z" title="Created 2023-12-08 20:50:07">2023-12-08</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By 坚竹韧周</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
