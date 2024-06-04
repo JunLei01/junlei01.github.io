@@ -8,3 +8,7 @@ http://junlei-zhou.com/Live/index.html
 http://junlei-zhou.com/2023/12/08/hello-world/
 http://junlei-zhou.com/
 http://junlei-zhou.com/tags/Machine-Learning-Supervised-machine-learning-Convex-optimization%EF%BC%8C-Dural-Problem/
+http://junlei-zhou.com/tags/Machine-Learning/
+http://junlei-zhou.com/tags/Supervised-machine-learning/
+http://junlei-zhou.com/tags/Convex-optimization/
+http://junlei-zhou.com/tags/Dural-Problem/
