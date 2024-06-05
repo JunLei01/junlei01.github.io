@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Support-Vector-Machine | Welcome to Junlei's word!</title><meta name="author" content="坚竹韧周"><meta name="copyright" content="坚竹韧周"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="支持向量机 (Support Vector Machine)简介支持向量机是无监督机器学习中一个经典的算法，具有完善的数学理论和推理证明。本文将从SVM问题定义，模型建立，数学推理对SVM进行详细的论述。 线性可分 (Linear S)问题定义在一个样本空间中，给定训练样本集，在样本空间中能够找到一个划分超平面，将不同类别的样本区分开。  图1：线性可分，存在多个超平面将两类训练样本分开  结论1">
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Support-Vector-Machine | Welcome to Junlei's word!</title><meta name="author" content="坚竹韧周"><meta name="copyright" content="坚竹韧周"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="支持向量机 (Support Vector Machine) 简介 支持向量机是无监督机器学习中一个经典的算法，具有完善的数学理论和推理证明。本文将从SVM问题定义，模型建立，数学推理对SVM进行详细的论述。 线性可分 (Linear S) 问题定义 在一个样本空间中，给定训练样本集，在样本空间中能够找到一个划分超平面，将不同类别的样本区分开。    图1：线性可分，存在多个超">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Support-Vector-Machine">
 <meta property="og:url" content="http://junlei-zhou.com/2024/05/29/Support-Vector-Machine/index.html">
 <meta property="og:site_name" content="Welcome to Junlei&#39;s word!">
-<meta property="og:description" content="支持向量机 (Support Vector Machine)简介支持向量机是无监督机器学习中一个经典的算法，具有完善的数学理论和推理证明。本文将从SVM问题定义，模型建立，数学推理对SVM进行详细的论述。 线性可分 (Linear S)问题定义在一个样本空间中，给定训练样本集，在样本空间中能够找到一个划分超平面，将不同类别的样本区分开。  图1：线性可分，存在多个超平面将两类训练样本分开  结论1">
+<meta property="og:description" content="支持向量机 (Support Vector Machine) 简介 支持向量机是无监督机器学习中一个经典的算法，具有完善的数学理论和推理证明。本文将从SVM问题定义，模型建立，数学推理对SVM进行详细的论述。 线性可分 (Linear S) 问题定义 在一个样本空间中，给定训练样本集，在样本空间中能够找到一个划分超平面，将不同类别的样本区分开。    图1：线性可分，存在多个超">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://junlei-zhou.com/img/avatar.jpg">
 <meta property="article:published_time" content="2024-05-29T07:56:16.000Z">
-<meta property="article:modified_time" content="2024-06-05T07:09:02.458Z">
+<meta property="article:modified_time" content="2024-06-05T07:53:30.123Z">
 <meta property="article:author" content="坚竹韧周">
 <meta property="article:tag" content="Machine Learning">
 <meta property="article:tag" content="Supervised machine learning">
@@ -59,7 +59,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2024-06-05 15:09:02'
+  postUpdate: '2024-06-05 15:53:30'
 }</script><script>(win=>{
       win.saveToLocal = {
         set: (key, value, ttl) => {
@@ -157,252 +157,702 @@
       }
       detectApple()
     })(window)</script><meta name="generator" content="Hexo 7.0.0"><link rel="alternate" href="/atom.xml" title="Welcome to Junlei's word!" type="application/atom+xml">
-</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> Blog</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-blog"></i><span> Library</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Live</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/movies/"><i class="fa-fw fa fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fa fa-gamepad"></i><span> Game</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fa fa-paper-plane"></i><span> Comments</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Welcome to Junlei's word!"><span class="site-name">Welcome to Junlei's word!</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> Blog</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-blog"></i><span> Library</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Live</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/movies/"><i class="fa-fw fa fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fa fa-gamepad"></i><span> Game</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fa fa-paper-plane"></i><span> Comments</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Support-Vector-Machine</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-05-29T07:56:16.000Z" title="Created 2024-05-29 15:56:16">2024-05-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-06-05T07:09:02.458Z" title="Updated 2024-06-05 15:09:02">2024-06-05</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Support-Vector-Machine"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="支持向量机-Support-Vector-Machine"><a href="#支持向量机-Support-Vector-Machine" class="headerlink" title="支持向量机 (Support Vector Machine)"></a>支持向量机 (Support Vector Machine)</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>支持向量机是无监督机器学习中一个经典的算法，具有完善的数学理论和推理证明。本文将从SVM问题定义，模型建立，数学推理对SVM进行详细的论述。</p>
-<h2 id="线性可分-Linear-S"><a href="#线性可分-Linear-S" class="headerlink" title="线性可分 (Linear S)"></a>线性可分 (Linear S)</h2><h4 id="问题定义"><a href="#问题定义" class="headerlink" title="问题定义"></a>问题定义</h4><p>在一个样本空间中，给定训练样本集，在样本空间中能够找到一个划分超平面，将不同类别的样本区分开。</p>
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> Blog</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-blog"></i><span> Library</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Live</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/movies/"><i class="fa-fw fa fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fa fa-gamepad"></i><span> Game</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fa fa-paper-plane"></i><span> Comments</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Welcome to Junlei's word!"><span class="site-name">Welcome to Junlei's word!</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> Blog</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-blog"></i><span> Library</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Live</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/movies/"><i class="fa-fw fa fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fa fa-gamepad"></i><span> Game</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fa fa-paper-plane"></i><span> Comments</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Support-Vector-Machine</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-05-29T07:56:16.000Z" title="Created 2024-05-29 15:56:16">2024-05-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-06-05T07:53:30.123Z" title="Updated 2024-06-05 15:53:30">2024-06-05</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Support-Vector-Machine"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="支持向量机-support-vector-machine">支持向量机 (Support Vector
+Machine)</h1>
+<h2 id="简介">简介</h2>
+<p>支持向量机是无监督机器学习中一个经典的算法，具有完善的数学理论和推理证明。本文将从SVM问题定义，模型建立，数学推理对SVM进行详细的论述。</p>
+<h2 id="线性可分-linear-s">线性可分 (Linear S)</h2>
+<h4 id="问题定义">问题定义</h4>
+<p>在一个样本空间中，给定训练样本集，在样本空间中能够找到一个划分超平面，将不同类别的样本区分开。</p>
 <p><img src="https://imgur.la/images/2024/06/03/image-20240530093244843.png" alt="image 20240530093244843" border="0" style="zoom:50%;" ></p>
-<center><p>图1：线性可分，存在多个超平面将两类训练样本分开</p></center>
-
+<center>
+<p>
+图1：线性可分，存在多个超平面将两类训练样本分开
+</p>
+</center>
 <p><strong>结论1：在一个空间中，如果存在一条直线能够划分两个点集，那么将存在无数条直线能够划分这两个点集。(证明见附录)</strong></p>
-<h4 id="数学定义"><a href="#数学定义" class="headerlink" title="数学定义"></a><strong>数学定义</strong></h4><p>$D_1$和 $D_2$ 是 n 维欧氏空间中的两个点集。如果存在 n 维向量 $w$ 和实数 $b$ 使得所有属于 $D_0$ 的点 $x_i$ 都有 $wx_i+b&gt;0$, 而对于所有属于 $D_1$ 的点 $x_j$ 则有 $wx_j+b&lt;0$，则我们称 $D_0$ 和 $D_1$ 线性可分。</p>
-<h2 id="SVM解决线性问题"><a href="#SVM解决线性问题" class="headerlink" title="SVM解决线性问题"></a>SVM解决线性问题</h2><h4 id="线性问题定义"><a href="#线性问题定义" class="headerlink" title="线性问题定义"></a>线性问题定义</h4><p>由 <strong>结论1</strong> 可得，对于一个线性可分的问题，存在无数条满足要求的直线，那么究竟哪一条直线是最好的？</p>
+<h4 id="数学定义"><strong>数学定义</strong></h4>
+<p><span class="math inline">\(D_1\)</span>和 <span
+class="math inline">\(D_2\)</span> 是 n 维欧氏空间中的两个点集。如果存在
+n 维向量 <span class="math inline">\(w\)</span> 和实数 <span
+class="math inline">\(b\)</span> 使得所有属于 <span
+class="math inline">\(D_0\)</span> 的点 <span
+class="math inline">\(x_i\)</span> 都有 <span
+class="math inline">\(wx_i+b&gt;0\)</span>, 而对于所有属于 <span
+class="math inline">\(D_1\)</span> 的点 <span
+class="math inline">\(x_j\)</span> 则有 <span
+class="math inline">\(wx_j+b&lt;0\)</span>，则我们称 <span
+class="math inline">\(D_0\)</span> 和 <span
+class="math inline">\(D_1\)</span> 线性可分。</p>
+<h2 id="svm解决线性问题">SVM解决线性问题</h2>
+<h4 id="线性问题定义">线性问题定义</h4>
+<p>由 <strong>结论1</strong>
+可得，对于一个线性可分的问题，存在无数条满足要求的直线，那么究竟哪一条直线是最好的？</p>
 <p><img src="https://imgur.la/images/2024/06/03/image-20240530104549138.png" alt="image-20240530104549138" style="zoom:50%;" /></p>
-<center><p>图2：线性可分，存在多个超平面将两类训练样本分开</p></center>
-
+<center>
+<p>
+图2：线性可分，存在多个超平面将两类训练样本分开
+</p>
+</center>
 <p>直观上看，应该去找位于两类训练样本“正中间”的划分超平面，即图中红色的直线，因为该划分超平面对训练样本局部扰动的“容忍”性最好，例如，由于训练集的局限性或噪声的因素，训练集外的样本可能比图中的训练样本更接近两个类的分隔界，这将使许多划分超平面出现错误，而红色的超平面受影响最小，换言之，这个划分超平面所产生的分类结果是最鲁棒的，对未见示例的泛化能力最强。</p>
-<p><strong>问题1：我们怎样定义这样一个最好的直线？</strong>  答：为每条直线定义一个性能指标，将每条直线平移直至该直线能够插到最边缘的样本点，如下图所示：</p>
+<p><strong>问题1：我们怎样定义这样一个最好的直线？</strong>
+答：为每条直线定义一个性能指标，将每条直线平移直至该直线能够插到最边缘的样本点，如下图所示：</p>
 <p><img src="https://imgur.la/images/2024/06/03/image-20240530112035809.png" alt="image-20240530112035809" style="zoom:50%;" /></p>
-<center><p>图3：支持向量与间隔</p></center>
-
+<center>
+<p>
+图3：支持向量与间隔
+</p>
+</center>
 <p>如图3所示，我们做如下定义：</p>
-<p>$r$ : 间隔(Margin)，将平行线平移直至插到支持向量的距离</p>
-<p>$x$ : 训练集中的样本</p>
-<p>$y$ : 训练集中样本对应的标签</p>
-<p>$D={(x_1,y_1),(x_2,y_2),\dots,(x_n,y_n) },y_i\in{-1,+1}$ : 训练样本集</p>
-<p>$w^Tx+b=0$ : 超平面(Hypeplane)，即上文中提到的直线，在二维空间中是一条直线，在高维空间中，则是超平面 (hyperplane)。</p>
-<h4 id="SVM基本型"><a href="#SVM基本型" class="headerlink" title="SVM基本型"></a>SVM基本型</h4><p>支持向量机——线性可分，本质为最大化 <strong>Margin</strong> 问题，属于凸优化中的 <strong>二次规划</strong> 问题。</p>
+<p><span class="math inline">\(r\)</span> :
+间隔(Margin)，将平行线平移直至插到支持向量的距离</p>
+<p><span class="math inline">\(x\)</span> : 训练集中的样本</p>
+<p><span class="math inline">\(y\)</span> : 训练集中样本对应的标签</p>
+<p><span class="math inline">\(D=\{(x_1,y_1),(x_2,y_2),\dots,(x_n,y_n)
+\},y_i\in\{-1,+1\}\)</span> : 训练样本集</p>
+<p><span class="math inline">\(w^Tx+b=0\)</span> :
+超平面(Hypeplane)，即上文中提到的直线，在二维空间中是一条直线，在高维空间中，则是超平面
+(hyperplane)。</p>
+<h4 id="svm基本型">SVM基本型</h4>
+<p>支持向量机——线性可分，本质为最大化 <strong>Margin</strong>
+问题，属于凸优化中的 <strong>二次规划</strong> 问题。</p>
 <ul>
-<li>最小化  (Minimize) :             $\frac{1}{2}||w||^2$</li>
-<li>限制条件 (Subject to) :         $y_i[w^Tx_i+b]\geq1, \ \ \ \ \ \ \ \ \ \ \ \ i=1，2,\dots,n$</li>
+<li>最小化 (Minimize) : <span
+class="math inline">\(\frac{1}{2}||w||^2\)</span></li>
+<li>限制条件 (Subject to) : <span
+class="math inline">\(y_i[w^Tx_i+b]\geq1, \ \ \ \ \ \ \ \ \ \ \ \
+i=1，2,\dots,n\)</span></li>
 </ul>
 <p><strong>解释：</strong></p>
-<p><strong>定理1：</strong>$w^T+b=0$ 与 $aw^T+ab=0$ 是同一个超平面，若 $(w,b)$ 满足 $y_i[w^Tx_i+b]\geq1$ 那么 $(aw,ab)$ 也满足 $y_i[aw^Tx_i+ab]\geq1$ 。</p>
-<p><strong>定理2：</strong>点 $(x_0,y_0)$ 到直线 $ax+by+c=0$ 的距离 $d=\frac{|ax_0+by_0+c|}{\sqrt{a^2+b^2}}$ ; 点到超平面 $H$ 的距离即 $r=\frac{|w^Tx_0+b|}{||w||}$.  </p>
-<p>由 <strong>定理1</strong>我们可以通过缩放将 $|w^Tx_0+b|$ 通过乘以一个缩放因子 $a$ 使得 $|aw^Tx_0+ab|=1$, 则此时 $r=\frac{1}{||w||}$, 故而最大化 <strong>Margin</strong> 即可以转变为最小化 $||w||$ 问题。由于我们在计算机中使用梯度下降进行最优化求解，为了求导数方便，因此常常使用$||w||^2$ 或者 $\frac{1}{2}||w||^2$ 的形式来代替 $||w||$ 。</p>
-<p>限制条件 : 即对于所有的样本点，除了支持向量，其他的点都必须比支持向量到超平面的距离要远。</p>
-<p>到此，SVM的基本型便定义完成，这是一个简单的凸优化问题，我们可以使用简单的凸优化求解方法来实现计算 (如梯度下降法)。</p>
-<h2 id="SVM解决非线性问题"><a href="#SVM解决非线性问题" class="headerlink" title="SVM解决非线性问题"></a>SVM解决非线性问题</h2><h4 id="非线性可分"><a href="#非线性可分" class="headerlink" title="非线性可分"></a>非线性可分</h4><p><img src="https://imgur.la/images/2024/06/03/SVM_image4.png" alt="SVM image4" border="0" style="zoom:40%;" ><img src="https://imgur.la/images/2024/06/03/SVM_image5.png" alt="SVM image5" border="0" style="zoom:40%;" ></p>
-<center><p>图4：非线性可分，在二维空间中，我们无法找到一条直线来分离这两个类别</p></center>
-
-<p>如图4所示，对于非线性可分的情况，在二维空间中我们无法使用一条直线或者一个平面将两个类别完全区分。在低维空间中我们无法有效地将这两类点完全区分，但在高维空间中，我们可以找到一个超平面来完全区分这两类点 (<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Cover%27s_theorem"><strong>Cover’s theorem</strong></a>) .</p>
+<p><strong>定理1：</strong><span class="math inline">\(w^T+b=0\)</span>
+与 <span class="math inline">\(aw^T+ab=0\)</span> 是同一个超平面，若
+<span class="math inline">\((w,b)\)</span> 满足 <span
+class="math inline">\(y_i[w^Tx_i+b]\geq1\)</span> 那么 <span
+class="math inline">\((aw,ab)\)</span> 也满足 <span
+class="math inline">\(y_i[aw^Tx_i+ab]\geq1\)</span> 。</p>
+<p><strong>定理2：</strong>点 <span
+class="math inline">\((x_0,y_0)\)</span> 到直线 <span
+class="math inline">\(ax+by+c=0\)</span> 的距离 <span
+class="math inline">\(d=\frac{|ax_0+by_0+c|}{\sqrt{a^2+b^2}}\)</span> ;
+点到超平面 <span class="math inline">\(H\)</span> 的距离即 <span
+class="math inline">\(r=\frac{|w^Tx_0+b|}{||w||}\)</span>.</p>
+<p>由 <strong>定理1</strong>我们可以通过缩放将 <span
+class="math inline">\(|w^Tx_0+b|\)</span> 通过乘以一个缩放因子 <span
+class="math inline">\(a\)</span> 使得 <span
+class="math inline">\(|aw^Tx_0+ab|=1\)</span>, 则此时 <span
+class="math inline">\(r=\frac{1}{||w||}\)</span>, 故而最大化
+<strong>Margin</strong> 即可以转变为最小化 <span
+class="math inline">\(||w||\)</span>
+问题。由于我们在计算机中使用梯度下降进行最优化求解，为了求导数方便，因此常常使用<span
+class="math inline">\(||w||^2\)</span> 或者 <span
+class="math inline">\(\frac{1}{2}||w||^2\)</span> 的形式来代替 <span
+class="math inline">\(||w||\)</span> 。</p>
+<p>限制条件 :
+即对于所有的样本点，除了支持向量，其他的点都必须比支持向量到超平面的距离要远。</p>
+<p>到此，SVM的基本型便定义完成，这是一个简单的凸优化问题，我们可以使用简单的凸优化求解方法来实现计算
+(如梯度下降法)。</p>
+<h2 id="svm解决非线性问题">SVM解决非线性问题</h2>
+<h4 id="非线性可分">非线性可分</h4>
+<p><img src="https://imgur.la/images/2024/06/03/SVM_image4.png" alt="SVM image4" border="0" style="zoom:40%;" ><img src="https://imgur.la/images/2024/06/03/SVM_image5.png" alt="SVM image5" border="0" style="zoom:40%;" ></p>
+<center>
+<p>
+图4：非线性可分，在二维空间中，我们无法找到一条直线来分离这两个类别
+</p>
+</center>
+<p>如图4所示，对于非线性可分的情况，在二维空间中我们无法使用一条直线或者一个平面将两个类别完全区分。在低维空间中我们无法有效地将这两类点完全区分，但在高维空间中，我们可以找到一个超平面来完全区分这两类点
+(<a
+target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Cover%27s_theorem"><strong>Cover’s
+theorem</strong></a>) .</p>
 <p><img src="https://imgur.la/images/2024/06/03/SVM_image64b9b723ba732350b.png" alt="SVM image6" border="0" style="zoom: 25%;" ></p>
-<center><p>图5：在低维空间中非线性可分，但将这些点映射到高维空间中则线性可分</p></center>
-
-<p>因此，为了寻找一个超平面，我们需要将原本的样本点 $x$ 映射到一个高维空间中去，即设 $\varphi(x)$ 为映射函数，$\varphi(x): \mathcal{X}\longrightarrow \mathcal{H}$，其中 $\mathcal{X}$ 为原输入空间，$\mathcal{H}$ 为特征空间( $\mathcal{H}$ 是Hibert Space， 即完备的内积空间)</p>
-<script type="math/tex; mode=display">
-x \stackrel{\varphi}{\longrightarrow}\varphi(x)</script><p><strong>问题2:  如何寻找这个高维映射方法？</strong>           直接将 $x$ 映射为为无限维。</p>
-<p>但此时由于 $\varphi(x)$ 是无限维，无法计算。 此时我们使用 <strong>核技巧(kernel trick) : 在输入空间中找到一个核函数(kernel function) $K(x_1,x_2)$ 使得 $K(x_1,x_2)=&lt;\varphi(x_1),\varphi(x_2)&gt;$, 从而可以直接在低维空间中计算出结果，加速核方法计算。</strong> (相关性质及定义请见 <strong>附录：核函数</strong>)</p>
+<center>
+<p>
+图5：在低维空间中非线性可分，但将这些点映射到高维空间中则线性可分
+</p>
+</center>
+<p>因此，为了寻找一个超平面，我们需要将原本的样本点 <span
+class="math inline">\(x\)</span> 映射到一个高维空间中去，即设 <span
+class="math inline">\(\varphi(x)\)</span> 为映射函数，<span
+class="math inline">\(\varphi(x): \mathcal{X}\longrightarrow
+\mathcal{H}\)</span>，其中 <span
+class="math inline">\(\mathcal{X}\)</span> 为原输入空间，<span
+class="math inline">\(\mathcal{H}\)</span> 为特征空间( <span
+class="math inline">\(\mathcal{H}\)</span> 是Hibert Space，
+即完备的内积空间) <span class="math display">\[
+x \stackrel{\varphi}{\longrightarrow}\varphi(x)
+\]</span> <strong>问题2: 如何寻找这个高维映射方法？</strong> 直接将
+<span class="math inline">\(x\)</span> 映射为为无限维。</p>
+<p>但此时由于 <span class="math inline">\(\varphi(x)\)</span>
+是无限维，无法计算。 此时我们使用 <strong>核技巧(kernel trick) :
+在输入空间中找到一个核函数(kernel function) <span
+class="math inline">\(K(x_1,x_2)\)</span> 使得 <span
+class="math inline">\(K(x_1,x_2)=&lt;\varphi(x_1),\varphi(x_2)&gt;\)</span>,
+从而可以直接在低维空间中计算出结果，加速核方法计算。</strong>
+(相关性质及定义请见 <strong>附录：核函数</strong>)</p>
 <p><strong>问题3：如何实现非线性中完全区分不同类的点？</strong></p>
-<p>为了使线性可分的SVM优化泛化到非线性可分的情况，我们允许支持向量机在一些样本上出错，为此引入了 <strong>软间隔 (Soft Margin)</strong>，允许少部分样本可以不满足约束 $y_i[w^Tx_i+b]\geq1$, 但在最大化间隔的同时，应该保证不满足约束的样本数量尽可能的少，因此优化目标进一步可以变为：</p>
-<script type="math/tex; mode=display">
-\mathop{\min}_{w,b}\  \frac{1}{2}||\omega||^2+C\sum \limits_{i=1}^{N}\mathscr{l}_{0/1}(y_i[w^Tx_i+b]-1)</script><p>其中 $C&gt;0$ 是一个常数，$\mathscr{l}_{0/1}$ 是”0/1损失函数”</p>
-<script type="math/tex; mode=display">
-\mathscr{l}_{0/1}(z)= \left \{ \begin{array}{rcl} 1, & \mbox{if}\ \ z<0; \\ 0, & \mbox{otherwise.} \end{array} \right.</script><p>其中，当 $C$ 为无穷大时，新的优化目标式子能够迫使所有的样本均满足约束式子。此时 $\frac{1}{2}||\omega||^2+C\sum \limits<em>{i=1}^{N}\mathscr{l}</em>{0/1}(y_i[w^Tx_i+b]-1)$ 与 $\frac{1}{2}||w||^2$ 等价；当 $C$ 为有限值时，新的优化目标允许一部分样本不满足约束。</p>
-<p>然而，$\mathscr{l}<em>{0/1}$ 非凸、非连续，数学性质不好，导致不易直接求解，故而我们通常使用其他的一些函数代替 $\mathscr{l}</em>{0/1}$ 并称之为 “替代损失 (surrogate loss)”。这些替代损失通常具有较好的数学性质，通常是凸的连续函数且是 $\mathscr{l}<em>{0/1}$ 的上界。如我们采用hinge损失代替 $\mathscr{l}</em>{0/1}$ 则优化目标可以变为</p>
-<script type="math/tex; mode=display">
-\mathop{\min}_{w,b}\  \frac{1}{2}||\omega||^2+C\sum \limits_{i=1}^{N}\max(0,\ 1-y_i[w^Tx_i+b])</script><p>实际中我们可以引入<strong>松弛变量 (Slack Variable) $\xi_i\geq0$</strong> 来代替上式中的替代损失，得到</p>
-<script type="math/tex; mode=display">
-\mathop{\min}_{w,b}\ \frac{1}{2}||\omega||^2+C\sum \limits_{i=1}^{N}\xi_i</script><p>从机器学习的角度来看，非线性SVM的优化目标可以看作为对线性的SVM优化目标添加了一个 <strong>正则项 (Regulation) $C\sum \limits_{i=1}^{N}\xi_i$</strong> </p>
-<h4 id="非线性SVM优化"><a href="#非线性SVM优化" class="headerlink" title="非线性SVM优化"></a>非线性SVM优化</h4><p>支持向量机——非线性可分 (“软间隔”支持向量机)</p>
+<p>为了使线性可分的SVM优化泛化到非线性可分的情况，我们允许支持向量机在一些样本上出错，为此引入了
+<strong>软间隔 (Soft Margin)</strong>，允许少部分样本可以不满足约束
+<span class="math inline">\(y_i[w^Tx_i+b]\geq1\)</span>,
+但在最大化间隔的同时，应该保证不满足约束的样本数量尽可能的少，因此优化目标进一步可以变为：
+<span class="math display">\[
+\mathop{\min}_{w,b}\  \frac{1}{2}||\omega||^2+C\sum
+\limits_{i=1}^{N}\mathscr{l}_{0/1}(y_i[w^Tx_i+b]-1)
+\]</span> 其中 <span class="math inline">\(C&gt;0\)</span>
+是一个常数，<span class="math inline">\(\mathscr{l}_{0/1}\)</span>
+是"0/1损失函数" <span class="math display">\[
+\mathscr{l}_{0/1}(z)= \left \{ \begin{array}{rcl} 1, &amp; \mbox{if}\ \
+z&lt;0; \\ 0, &amp; \mbox{otherwise.} \end{array} \right.
+\]</span> 其中，当 <span class="math inline">\(C\)</span>
+为无穷大时，新的优化目标式子能够迫使所有的样本均满足约束式子。此时 <span
+class="math inline">\(\frac{1}{2}||\omega||^2+C\sum
+\limits_{i=1}^{N}\mathscr{l}_{0/1}(y_i[w^Tx_i+b]-1)\)</span> 与 <span
+class="math inline">\(\frac{1}{2}||w||^2\)</span> 等价；当 <span
+class="math inline">\(C\)</span>
+为有限值时，新的优化目标允许一部分样本不满足约束。</p>
+<p>然而，<span class="math inline">\(\mathscr{l}_{0/1}\)</span>
+非凸、非连续，数学性质不好，导致不易直接求解，故而我们通常使用其他的一些函数代替
+<span class="math inline">\(\mathscr{l}_{0/1}\)</span> 并称之为
+"替代损失 (surrogate
+loss)"。这些替代损失通常具有较好的数学性质，通常是凸的连续函数且是 <span
+class="math inline">\(\mathscr{l}_{0/1}\)</span>
+的上界。如我们采用hinge损失代替 <span
+class="math inline">\(\mathscr{l}_{0/1}\)</span> 则优化目标可以变为
+<span class="math display">\[
+\mathop{\min}_{w,b}\  \frac{1}{2}||\omega||^2+C\sum
+\limits_{i=1}^{N}\max(0,\ 1-y_i[w^Tx_i+b])
+\]</span> 实际中我们可以引入<strong>松弛变量 (Slack Variable) <span
+class="math inline">\(\xi_i\geq0\)</span></strong>
+来代替上式中的替代损失，得到 <span class="math display">\[
+\mathop{\min}_{w,b}\ \frac{1}{2}||\omega||^2+C\sum
+\limits_{i=1}^{N}\xi_i
+\]</span>
+从机器学习的角度来看，非线性SVM的优化目标可以看作为对线性的SVM优化目标添加了一个
+<strong>正则项 (Regulation) <span class="math inline">\(C\sum
+\limits_{i=1}^{N}\xi_i\)</span></strong></p>
+<h4 id="非线性svm优化">非线性SVM优化</h4>
+<p>支持向量机——非线性可分 ("软间隔"支持向量机)</p>
 <ul>
-<li>最小化 (Minimize) :             $\frac{1}{2}||w||^2+C\sum \limits_{i=1}^{N}\xi_i$</li>
-<li>限制条件 (Subject to) :         <ul>
-<li>​    $y_i[w^T\varphi(x_i)+b]\geq1-\xi_i, \ \ \ \ \ \ \ \ \ \ \ \ i=1，2,\dots,n$</li>
-<li>​    $\xi_i\geq0$</li>
+<li>最小化 (Minimize) : <span
+class="math inline">\(\frac{1}{2}||w||^2+C\sum
+\limits_{i=1}^{N}\xi_i\)</span></li>
+<li>限制条件 (Subject to) :
+<ul>
+<li>​ <span class="math inline">\(y_i[w^T\varphi(x_i)+b]\geq1-\xi_i, \ \
+\ \ \ \ \ \ \ \ \ \ i=1，2,\dots,n\)</span></li>
+<li>​ <span class="math inline">\(\xi_i\geq0\)</span></li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<p>在这个式子中存在高维映射 $\varphi(x_i)$ ,因而无法直接求解，因此我们要将该优化问题转换为可以求解的形式。</p>
-<h4 id="解非线性SVM的优化问题"><a href="#解非线性SVM的优化问题" class="headerlink" title="解非线性SVM的优化问题"></a>解非线性SVM的优化问题</h4><p><strong>关键：将非线性的SVM优化问题转换为其对应的对偶问题，利用求其对偶问题的解来代替求原非线性SVM问题的解</strong> </p>
+<p>在这个式子中存在高维映射 <span
+class="math inline">\(\varphi(x_i)\)</span>
+,因而无法直接求解，因此我们要将该优化问题转换为可以求解的形式。</p>
+<h4 id="解非线性svm的优化问题">解非线性SVM的优化问题</h4>
+<p><strong>关键：将非线性的SVM优化问题转换为其对应的对偶问题，利用求其对偶问题的解来代替求原非线性SVM问题的解</strong></p>
 <p>(原问题与对偶问题的关系证明见附录——优化理论：原问题与对偶问题)</p>
-<ul>
-<li><p>[ ] <strong>Step 1:</strong> 为了方便转换为其对应的对偶问题，首先要转变原问题的形式，使其与附录中的原问题的形式相一致。</p>
+<ul class="task-list">
+<li><p><label><input type="checkbox" /><strong>Step 1:</strong>
+为了方便转换为其对应的对偶问题，首先要转变原问题的形式，使其与附录中的原问题的形式相一致。</label></p>
 <p><img src="https://imgur.la/images/2024/06/05/SVM_image7.png" alt="SVM image7" border="0"></p>
-<center><p>图6：将非线性SVM的优化问题形式转换，与原问题中的形式保持一致</p></center>
-
-<p><strong>解释：</strong>其中 $\xi<em>i$ 是松弛变量，我们调整其取值范围为 $\xi_i\leq0$ ,相比较于原式子，只是在原来的 $\xi_i$ 前面加了一个 “负号”。因此保证之前的优化目标不变，故而要变为 $\frac{1}{2}||w||^2-C\sum \limits</em>{i=1}^{N}\xi<em>i$ ,限制条件变为 $y_i[w^T\varphi(x_i)+b]\geq1+\xi_i$ , 将其移项得 $1+\xi_i-y_iw^T\varphi(x_i)-y_ib\leq0$ 。此时原问题中的 $f(w)\Longrightarrow \frac{1}{2}||\omega||^2-C\sum \limits</em>{i=1}^{N}\xi_i$ , $g_i(w)\leq0 \Longrightarrow 1+\xi_i-y_iw^T\varphi(x_i)-y_ib\leq0 和 \xi_i\leq0$ 。</p>
-<h6 id="非线性SVM优化-转换后"><a href="#非线性SVM优化-转换后" class="headerlink" title="非线性SVM优化 (转换后)"></a>非线性SVM优化 (转换后)</h6><p>支持向量机——非线性可分 (“软间隔”支持向量机)</p>
+<center>
+<p>
+<p>图6：将非线性SVM的优化问题形式转换，与原问题中的形式保持一致</p>
+</p>
+</center>
+<p><strong>解释：</strong>其中 <span
+class="math inline">\(\xi_i\)</span> 是松弛变量，我们调整其取值范围为
+<span class="math inline">\(\xi_i\leq0\)</span>
+,相比较于原式子，只是在原来的 <span class="math inline">\(\xi_i\)</span>
+前面加了一个 "负号"。因此保证之前的优化目标不变，故而要变为 <span
+class="math inline">\(\frac{1}{2}||w||^2-C\sum
+\limits_{i=1}^{N}\xi_i\)</span> ,限制条件变为 <span
+class="math inline">\(y_i[w^T\varphi(x_i)+b]\geq1+\xi_i\)</span> ,
+将其移项得 <span
+class="math inline">\(1+\xi_i-y_iw^T\varphi(x_i)-y_ib\leq0\)</span>
+。此时原问题中的 <span class="math inline">\(f(w)\Longrightarrow
+\frac{1}{2}||\omega||^2-C\sum \limits_{i=1}^{N}\xi_i\)</span> , <span
+class="math inline">\(g_i(w)\leq0 \Longrightarrow
+1+\xi_i-y_iw^T\varphi(x_i)-y_ib\leq0 和 \xi_i\leq0\)</span> 。</p>
+<h6 id="非线性svm优化-转换后">非线性SVM优化 (转换后)</h6>
+<p>支持向量机——非线性可分 ("软间隔"支持向量机)</p>
 <ul>
-<li>最小化 (Minimize) :             $\frac{1}{2}||\omega||^2-C\sum \limits_{i=1}^{N}\xi_i$</li>
-<li>限制条件 (Subject to) :         <ul>
-<li>​    $1+\xi_i-y_iw^T\varphi(x_i)-y_ib\leq0, \ \ \ \ \ \ \ \ \ \ \ \ i=1，2,\dots,n$</li>
-<li>​    $\xi_i\leq0$</li>
+<li>最小化 (Minimize) : <span
+class="math inline">\(\frac{1}{2}||\omega||^2-C\sum
+\limits_{i=1}^{N}\xi_i\)</span></li>
+<li>限制条件 (Subject to) :
+<ul>
+<li>​ <span class="math inline">\(1+\xi_i-y_iw^T\varphi(x_i)-y_ib\leq0, \
+\ \ \ \ \ \ \ \ \ \ \ i=1，2,\dots,n\)</span></li>
+<li>​ <span class="math inline">\(\xi_i\leq0\)</span></li>
+</ul></li>
+</ul></li>
+<li><p><label><input type="checkbox" /><strong>Step 2: </strong>
+寻找转换后的非线性SVM优化问题的对偶问题，根据<strong>附录——优化理论：原问题与对偶问题</strong>我们可得其对偶问题为：</label></p>
+<h6 id="非线性svm优化问题的对偶问题">非线性SVM优化问题的对偶问题</h6>
+<ul>
+<li>最大化 (Maximum) : <span
+class="math inline">\(\theta(\alpha,\beta)=\inf
+\limits_{w,\xi_i,b}\{\frac{1}{2}||\omega||^2-C
+\sum\limits_{i=1}^N\xi_i+\sum\limits_{i=1}^{N}\alpha_i[1+\xi_i-y_iw^T\varphi(x_i)-y_ib]+\sum\limits_{i=1}^{N}\beta_i\xi_i
+\}\)</span></li>
+<li>限制条件 (Subject to) : <span
+class="math inline">\(i=1,2,\dots,N\)</span>
+<ul>
+<li><span class="math inline">\(\alpha_i\geq0\)</span> or <span
+class="math inline">\(\alpha\succeq0\)</span></li>
+<li><span class="math inline">\(\beta_i\geq0\)</span> or <span
+class="math inline">\(\beta\succeq0\)</span></li>
+</ul></li>
 </ul>
-</li>
-</ul>
-</li>
-<li><p>[ ] <strong>Step 2: </strong> 寻找转换后的非线性SVM优化问题的对偶问题，根据<strong>附录——优化理论：原问题与对偶问题</strong>我们可得其对偶问题为：</p>
-<h6 id="非线性SVM优化问题的对偶问题"><a href="#非线性SVM优化问题的对偶问题" class="headerlink" title="非线性SVM优化问题的对偶问题"></a>非线性SVM优化问题的对偶问题</h6><ul>
-<li>最大化 (Maximum) :         $\theta(\alpha,\beta)=\inf \limits<em>{w,\xi_i,b}{\frac{1}{2}||\omega||^2-C \sum\limits</em>{i=1}^N\xi<em>i+\sum\limits</em>{i=1}^{N}\alpha<em>i[1+\xi_i-y_iw^T\varphi(x_i)-y_ib]+\sum\limits</em>{i=1}^{N}\beta_i\xi_i }$</li>
-<li>限制条件 (Subject to) :  $i=1,2,\dots,N$<ul>
-<li>$\alpha_i\geq0$ or $\alpha\succeq0$</li>
-<li>$\beta_i\geq0$ or $\beta\succeq0$</li>
-</ul>
-</li>
-</ul>
-<p><strong>解释：</strong>其中优化目标中的 $\alpha$ 和 $\beta$ 与 <strong>附录——优化理论：原问题与对偶问题</strong>中的拉格朗日乘子中稍微有些不同，在原拉格朗日乘子中 $\alpha$ 控制限制条件中不等式， $\beta$ 控制限制条件中的等式。由于我们转换后的非线性SVM优化问题的限制条件中不存在等式 $h<em>i(w)=0$ 这一项，故而非线性SVM优化问题对应的拉格朗日乘子 $L(w,\alpha,\beta)=f(w)+\sum \limits</em>{i=1}^{K}\alpha<em>ig_i(w)+\sum \limits</em>{i=1}^{M}\beta<em>ih_i(w)$ 中不存在 $\sum \limits</em>{i=1}^{M}\beta_ih_i(w)$ 项。而我们转换后的非线性SVM优化问题的限制条件中存在两个不等式，故而非线性SVM优化问题对应的拉格朗日乘子包含了两个控制不等式的 $\alpha$ ,这里是为了在同一个式子中便于区分故而分别写为了 $\alpha,\beta$, 我们转化后的对偶问题中的 $\alpha,\beta$ 都对应拉格朗日乘子中的 $\alpha$.  对于限制条件中 $\alpha_i\geq0$ 与 $\alpha\succeq$0 的写法不同但含义相同，只不过前者表示向量 $\alpha$ 中的每一项都大于0，而后者表示向量 $\alpha$ 大于0.  </p>
-</li>
-<li><p>[ ] <strong>Step 3: </strong>求对偶问题的解，即要求出一组 $w,\xi_i,b$ 使优化目标中 ${\cdots}$ 部分最小。</p>
-<p>利用求导法，令</p>
-<script type="math/tex; mode=display">
+<p><strong>解释：</strong>其中优化目标中的 <span
+class="math inline">\(\alpha\)</span> 和 <span
+class="math inline">\(\beta\)</span> 与
+<strong>附录——优化理论：原问题与对偶问题</strong>中的拉格朗日乘子中稍微有些不同，在原拉格朗日乘子中
+<span class="math inline">\(\alpha\)</span> 控制限制条件中不等式， <span
+class="math inline">\(\beta\)</span>
+控制限制条件中的等式。由于我们转换后的非线性SVM优化问题的限制条件中不存在等式
+<span class="math inline">\(h_i(w)=0\)</span>
+这一项，故而非线性SVM优化问题对应的拉格朗日乘子 <span
+class="math inline">\(L(w,\alpha,\beta)=f(w)+\sum
+\limits_{i=1}^{K}\alpha_ig_i(w)+\sum
+\limits_{i=1}^{M}\beta_ih_i(w)\)</span> 中不存在 <span
+class="math inline">\(\sum \limits_{i=1}^{M}\beta_ih_i(w)\)</span>
+项。而我们转换后的非线性SVM优化问题的限制条件中存在两个不等式，故而非线性SVM优化问题对应的拉格朗日乘子包含了两个控制不等式的
+<span class="math inline">\(\alpha\)</span>
+,这里是为了在同一个式子中便于区分故而分别写为了 <span
+class="math inline">\(\alpha,\beta\)</span>, 我们转化后的对偶问题中的
+<span class="math inline">\(\alpha,\beta\)</span> 都对应拉格朗日乘子中的
+<span class="math inline">\(\alpha\)</span>. 对于限制条件中 <span
+class="math inline">\(\alpha_i\geq0\)</span> 与 $$0
+的写法不同但含义相同，只不过前者表示向量 <span
+class="math inline">\(\alpha\)</span> 中的每一项都大于0，而后者表示向量
+<span class="math inline">\(\alpha\)</span> 大于0.</p></li>
+<li><p><label><input type="checkbox" /><strong>Step 3:
+</strong>求对偶问题的解，即要求出一组 <span
+class="math inline">\(w,\xi_i,b\)</span> 使优化目标中 <span
+class="math inline">\(\{\cdots\}\)</span> 部分最小。</label></p>
+<p>利用求导法，令 <span class="math display">\[
 \begin{align}
-&\frac{\partial L}{\partial\omega}=0 \ \ \ \Longrightarrow w-\sum_{i=1}^{N}\alpha_iy_i\varphi(x_i)=0 \ \ \ \Longrightarrow w=\sum_{i=1}^{N}\alpha_iy_i\varphi(x_i) \\
-&\frac{\partial L}{\partial\xi_i}=0 \ \ \ \Longrightarrow \alpha_i+\beta_i=C \ \ \ \Longrightarrow \alpha_i+\beta_i=C \\
-&\frac{\partial L}{\partial b}=0 \ \ \ \Longrightarrow \sum_{i=1}^{N}\alpha_iy_i=0
-\end{align}</script><p>将上式代入 $\theta(\alpha,\beta)$ 得：</p>
-<script type="math/tex; mode=display">
+&amp;\frac{\partial L}{\partial\omega}=0 \ \ \ \Longrightarrow
+w-\sum_{i=1}^{N}\alpha_iy_i\varphi(x_i)=0 \ \ \ \Longrightarrow
+w=\sum_{i=1}^{N}\alpha_iy_i\varphi(x_i) \\
+&amp;\frac{\partial L}{\partial\xi_i}=0 \ \ \ \Longrightarrow
+\alpha_i+\beta_i=C \ \ \ \Longrightarrow \alpha_i+\beta_i=C \\
+&amp;\frac{\partial L}{\partial b}=0 \ \ \ \Longrightarrow
+\sum_{i=1}^{N}\alpha_iy_i=0
+\end{align}
+\]</span> 将上式代入 <span
+class="math inline">\(\theta(\alpha,\beta)\)</span> 得： <span
+class="math display">\[
 \begin{align}
-\theta(\alpha,\beta)&=\inf \limits_{w,\xi_i,b}\{\frac{1}{2}||w||^2-C \sum\limits_{i=1}^N\xi_i+\sum_{i=1}^{N}\alpha_i[1+\xi_i-y_iw^T\varphi(x_i)-y_ib]+\sum_{i=1}^{N}\beta_i\xi_i \} \\
-&=\inf \limits_{w,\xi_i,b} \{\frac{1}{2}w^Tw-\bcancel{\sum_{i=1}^{N}\alpha_i\xi_i}-\bcancel{\sum_{i=1}^{N}\beta_i\xi_i}+\sum_{i=1}^{N}\alpha_i+\bcancel{\sum_{i=1}^{N}\alpha_i\xi_i}-\sum_{i=1}^{N}\alpha_iy_i\varphi(x_i)w^T-\bcancel{\sum_{i=1}^{N}\alpha_iy_ib}+\bcancel{\sum_{i=1}^{N}\beta_i\xi_i} \} \\
-&=\inf \limits_{w,\xi_i,b} \{\frac{1}{2}\big(\sum_{i=1}^{N}\alpha_iy_i\varphi(x_i)\big)^T\big(\sum_{j=1}^{N}\alpha_jy_j\varphi(x_j)\big)+\sum_{i=1}^{N}\alpha_i-\big(\sum_{i=1}^{N}\alpha_iy_i\varphi(x_i)\big)^T\big(\sum_{j=1}^{N}\alpha_jy_j\varphi(x_j)\big) \} \\
-&=\inf \limits_{w,\xi_i,b} \{\sum_{i=1}^{N}\alpha_i-\frac{1}{2}\sum_{i=1}^{N}\sum_{j=1}^{N}\underbrace{\alpha_i\alpha_j}_{常数}\underbrace{y_iy_j}_{y=\pm1}\underbrace{\varphi(x_i)^T\varphi(x_j)}_{K(x_i,x_j)}\}
-\end{align}</script><p>最后，对偶问题可以转换为：</p>
-<h6 id="非线性SVM优化问题的对偶问题-求解后"><a href="#非线性SVM优化问题的对偶问题-求解后" class="headerlink" title="非线性SVM优化问题的对偶问题 (求解后)"></a>非线性SVM优化问题的对偶问题 (求解后)</h6><ul>
-<li>最大化 (Maximum) :         $\theta(\alpha)=\sum\limits<em>{i=1}^{N}\alpha_i-\frac{1}{2}\sum\limits</em>{i=1}^{N}\sum\limits<em>{j=1}^{N}\alpha_i\alpha_j\underbrace{y_jy_i}</em>{已知}\underbrace{K(x<em>i,x_j)}</em>{已知}$</li>
-<li>限制条件 (Subject to) :  $i=1,2,\dots,N$<ul>
-<li>$\alpha\geq0, \&amp;\&amp;\  \beta_i\geq0 \ \ \ \Longrightarrow\ 0\leq\alpha_i\leq C$</li>
-<li>$\sum\limits_{i=1}^{N}\alpha_iy_i=0$</li>
+\theta(\alpha,\beta)&amp;=\inf \limits_{w,\xi_i,b}\{\frac{1}{2}||w||^2-C
+\sum\limits_{i=1}^N\xi_i+\sum_{i=1}^{N}\alpha_i[1+\xi_i-y_iw^T\varphi(x_i)-y_ib]+\sum_{i=1}^{N}\beta_i\xi_i
+\} \\
+&amp;=\inf \limits_{w,\xi_i,b}
+\{\frac{1}{2}w^Tw-\bcancel{\sum_{i=1}^{N}\alpha_i\xi_i}-\bcancel{\sum_{i=1}^{N}\beta_i\xi_i}+\sum_{i=1}^{N}\alpha_i+\bcancel{\sum_{i=1}^{N}\alpha_i\xi_i}-\sum_{i=1}^{N}\alpha_iy_i\varphi(x_i)w^T-\bcancel{\sum_{i=1}^{N}\alpha_iy_ib}+\bcancel{\sum_{i=1}^{N}\beta_i\xi_i}
+\} \\
+&amp;=\inf \limits_{w,\xi_i,b}
+\{\frac{1}{2}\big(\sum_{i=1}^{N}\alpha_iy_i\varphi(x_i)\big)^T\big(\sum_{j=1}^{N}\alpha_jy_j\varphi(x_j)\big)+\sum_{i=1}^{N}\alpha_i-\big(\sum_{i=1}^{N}\alpha_iy_i\varphi(x_i)\big)^T\big(\sum_{j=1}^{N}\alpha_jy_j\varphi(x_j)\big)
+\} \\
+&amp;=\inf \limits_{w,\xi_i,b}
+\{\sum_{i=1}^{N}\alpha_i-\frac{1}{2}\sum_{i=1}^{N}\sum_{j=1}^{N}\underbrace{\alpha_i\alpha_j}_{常数}\underbrace{y_iy_j}_{y=\pm1}\underbrace{\varphi(x_i)^T\varphi(x_j)}_{K(x_i,x_j)}\}
+\end{align}
+\]</span> 最后，对偶问题可以转换为：</p>
+<h6 id="非线性svm优化问题的对偶问题-求解后">非线性SVM优化问题的对偶问题
+(求解后)</h6>
+<ul>
+<li>最大化 (Maximum) : <span
+class="math inline">\(\theta(\alpha)=\sum\limits_{i=1}^{N}\alpha_i-\frac{1}{2}\sum\limits_{i=1}^{N}\sum\limits_{j=1}^{N}\alpha_i\alpha_j\underbrace{y_jy_i}_{已知}\underbrace{K(x_i,x_j)}_{已知}\)</span></li>
+<li>限制条件 (Subject to) : <span
+class="math inline">\(i=1,2,\dots,N\)</span>
+<ul>
+<li><span class="math inline">\(\alpha\geq0, \&amp;\&amp;\  \beta_i\geq0
+\ \ \ \Longrightarrow\ 0\leq\alpha_i\leq C\)</span></li>
+<li><span
+class="math inline">\(\sum\limits_{i=1}^{N}\alpha_iy_i=0\)</span></li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<p>此时，该问题变为了一个基本的凸优化问题，我们可以使用 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Sequential_minimal_optimization"><strong>SMO算法</strong></a> 对其进行求解。</p>
-</li>
-<li><p>[ ] <strong>Step 4: </strong>将求 $\alpha$ 转化为求 $w,b$.</p>
-<p>由 <strong>Step 3</strong> 有 $w=\sum\limits_{i=1}^{N}\alpha_iy_i\varphi(x_i)$ ，但其中仍然存在高维向量 $\varphi(x_i)$ 似乎无法求解，但实际上，我们对于一个测试样本 $x$ ,则有:</p>
-<script type="math/tex; mode=display">
-\left\{ \begin{array}{rcl} 
+<p>此时，该问题变为了一个基本的凸优化问题，我们可以使用 <a
+target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Sequential_minimal_optimization"><strong>SMO算法</strong></a>
+对其进行求解。</p></li>
+<li><p><label><input type="checkbox" /><strong>Step 4: </strong>将求
+<span class="math inline">\(\alpha\)</span> 转化为求 <span
+class="math inline">\(w,b\)</span>.</label></p>
+<p>由 <strong>Step 3</strong> 有 <span
+class="math inline">\(w=\sum\limits_{i=1}^{N}\alpha_iy_i\varphi(x_i)\)</span>
+，但其中仍然存在高维向量 <span
+class="math inline">\(\varphi(x_i)\)</span>
+似乎无法求解，但实际上，我们对于一个测试样本 <span
+class="math inline">\(x\)</span> ,则有: <span class="math display">\[
+\left\{ \begin{array}{rcl}
 若w^T\varphi(x)+b\geq0,则\ y=+1\\
-若w^T\varphi(x)+b<0,则\ y=-1
-\end{array}\right.</script><p>其中 $w^T\varphi(x)=\sum\limits<em>{i=1}^{N}\alpha_iy_i\varphi(x_i)^T\varphi(x_i)\ \  \Longrightarrow \sum\limits</em>{i=1}^{N}\alpha_iy_iK(x_i,x)$ , 即我们不需要知道 $w$ 具体是多少，我们可以直接算出 $w^T\varphi(x)$ 的值。</p>
-<p>现在只需要求出 $b$ 即可，利用 <strong>KKT条件</strong> 求 $b$. </p>
-<p><strong>KKT条件：</strong>对于  $\forall i=1,2,\dots,K.$ 则有 $\alpha_i^<em>=0$ 或者 $g_i(w^</em>)=0$ .<br><strong>转化为SVM中的KKT</strong>，则有 $\forall\  i=1,2,\dots,N$</p>
-<pre><code>                                     $\blacktriangleright$ 要么 $ \beta_i=0$,  要么 $\xi_i=0$
-                                     $\blacktriangleright$ 要么 $\alpha_i=0$, 要么 $1+\xi_i-y_iw^T\varphi(x_i)-y_ib=0$
-</code></pre><p>因此，我们随机选取一个 $\alpha_i$ , 则 $0&lt;\alpha_i<C$， 则 $\beta_i=C-\alpha_i>0$</p>
-<p>​                                        $\therefore \beta_i\neq0, \ 则\ \xi_i=0$,</p>
-<p>​                                        $\therefore \alpha_i\neq0, \ 则 \ 1+\xi_i-y_iw^T\varphi(x_i)-y_ib=0$</p>
-<p>​                                        $\therefore b=\frac{1}{y<em>i}-\sum</em>{i=1}^{N}\alpha_iy_iK(x_i,x)$</p>
-<p>至此，非线性SVM的优化问题求解完毕！</p>
-</li>
+若w^T\varphi(x)+b&lt;0,则\ y=-1
+\end{array}\right.
+\]</span> 其中 <span
+class="math inline">\(w^T\varphi(x)=\sum\limits_{i=1}^{N}\alpha_iy_i\varphi(x_i)^T\varphi(x_i)\
+\  \Longrightarrow \sum\limits_{i=1}^{N}\alpha_iy_iK(x_i,x)\)</span> ,
+即我们不需要知道 <span class="math inline">\(w\)</span>
+具体是多少，我们可以直接算出 <span
+class="math inline">\(w^T\varphi(x)\)</span> 的值。</p>
+<p>现在只需要求出 <span class="math inline">\(b\)</span> 即可，利用
+<strong>KKT条件</strong> 求 <span class="math inline">\(b\)</span>.</p>
+<p><strong>KKT条件：</strong>对于 <span class="math inline">\(\forall
+i=1,2,\dots,K.\)</span> 则有 <span
+class="math inline">\(\alpha_i^*=0\)</span> 或者 <span
+class="math inline">\(g_i(w^*)=0\)</span> .
+<strong>转化为SVM中的KKT</strong>，则有 <span
+class="math inline">\(\forall\  i=1,2,\dots,N\)</span> <span
+class="math inline">\(\blacktriangleright\)</span> 要么 $ _i=0$, 要么
+<span class="math inline">\(\xi_i=0\)</span> <span
+class="math inline">\(\blacktriangleright\)</span> 要么 <span
+class="math inline">\(\alpha_i=0\)</span>, 要么 <span
+class="math inline">\(1+\xi_i-y_iw^T\varphi(x_i)-y_ib=0\)</span></p>
+<p>因此，我们随机选取一个 <span class="math inline">\(\alpha_i\)</span>
+, 则 <span class="math inline">\(0&lt;\alpha_i&lt;C\)</span>， 则 <span
+class="math inline">\(\beta_i=C-\alpha_i&gt;0\)</span></p>
+<p>​ <span class="math inline">\(\therefore \beta_i\neq0, \ 则\
+\xi_i=0\)</span>,</p>
+<p>​ <span class="math inline">\(\therefore \alpha_i\neq0, \ 则 \
+1+\xi_i-y_iw^T\varphi(x_i)-y_ib=0\)</span></p>
+<p>​ <span class="math inline">\(\therefore
+b=\frac{1}{y_i}-\sum_{i=1}^{N}\alpha_iy_iK(x_i,x)\)</span></p>
+<p>至此，非线性SVM的优化问题求解完毕！</p></li>
 </ul>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h4 id="SVM算法：训练过程"><a href="#SVM算法：训练过程" class="headerlink" title="SVM算法：训练过程"></a>SVM算法：训练过程</h4><p>输入 ${(x<em>i,y_i)}</em>{i=1,2,\dots,N}$，解优化问题</p>
+<h2 id="总结">总结</h2>
+<h4 id="svm算法训练过程">SVM算法：训练过程</h4>
+<p>输入 <span
+class="math inline">\(\{(x_i,y_i)\}_{i=1,2,\dots,N}\)</span>，解优化问题</p>
 <ul>
-<li>最大化 (Maximum) :         $\theta(\alpha)=\sum\limits<em>{i=1}^{N}\alpha_i-\frac{1}{2}\sum\limits</em>{i=1}^{N}\sum\limits<em>{j=1}^{N}\alpha_i\alpha_j\underbrace{y_jy_i}</em>{已知}\underbrace{K(x<em>i,x_j)}</em>{已知}$</li>
-<li>限制条件 (Subject to) :  $i=1,2,\dots,N$<ul>
-<li>$\alpha\geq0, \&amp;\&amp;\  \beta_i\geq0 \ \ \ \Longrightarrow\ 0\leq\alpha_i\leq C$</li>
-<li>$\sum\limits_{i=1}^{N}\alpha_iy_i=0$</li>
-</ul>
-</li>
-</ul>
-<p>利用SMO算法求解最优化问题，得出 $\alpha$, 下一步寻找一个 $0&lt;\alpha_i&lt;0$，计算 $b$ :</p>
-<p>​          $b=\frac{1}{y<em>i}-\sum</em>{i=1}^{N}\alpha_iy_iK(x_i,x)$</p>
-<h4 id="SVM算法：测试过程"><a href="#SVM算法：测试过程" class="headerlink" title="SVM算法：测试过程"></a>SVM算法：测试过程</h4><p>输入样本 $x$：</p>
+<li>最大化 (Maximum) : <span
+class="math inline">\(\theta(\alpha)=\sum\limits_{i=1}^{N}\alpha_i-\frac{1}{2}\sum\limits_{i=1}^{N}\sum\limits_{j=1}^{N}\alpha_i\alpha_j\underbrace{y_jy_i}_{已知}\underbrace{K(x_i,x_j)}_{已知}\)</span></li>
+<li>限制条件 (Subject to) : <span
+class="math inline">\(i=1,2,\dots,N\)</span>
 <ul>
-<li>若 $\sum\limits_{i=1}^{N}\alpha_iy_iK(x_i,x)+b\geq0$, 则 $ y=+1$,</li>
-<li>若 $\sum\limits_{i=1}^{N}\alpha_iy_iK(x_i,x)+b&lt;0$, 则 $ y=+1$.</li>
+<li><span class="math inline">\(\alpha\geq0, \&amp;\&amp;\  \beta_i\geq0
+\ \ \ \Longrightarrow\ 0\leq\alpha_i\leq C\)</span></li>
+<li><span
+class="math inline">\(\sum\limits_{i=1}^{N}\alpha_iy_i=0\)</span></li>
+</ul></li>
 </ul>
-<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><h4 id="结论1证明："><a href="#结论1证明：" class="headerlink" title="结论1证明："></a>结论1证明：</h4><h5 id="二维平面上的证明"><a href="#二维平面上的证明" class="headerlink" title="二维平面上的证明"></a>二维平面上的证明</h5><p>假设我们有两个点集 $A$ 和 $B$，并且这两个点集是线性可分的。这意味着存在一条直线可以将这两个点集分开。为了证明存在无数条直线能够划分这两个点集，我们可以如下进行证明：</p>
-<ol>
-<li><p><strong>存在一条直线</strong>：假设存在一条直线 $L$ 可以将点集 $A$ 和 $B$ 分开。直线 $L$ 可以表示为：</p>
-<script type="math/tex; mode=display">
-𝑦=k𝑥+b</script><p>其中 $k$ 是斜率，$b$ 是截距。</p>
-</li>
-<li><p><strong>平行直线的性质</strong>：对于任何一个固定的斜率 𝑚<em>m</em>，不同的截距 𝑐<em>c</em> 会产生不同的平行直线。设我们有另一条直线 𝐿′<em>L</em>′ 其方程为：</p>
-<script type="math/tex; mode=display">
-𝑦=𝑚𝑥+b^′</script><p>其中 $b’\neq b$，则 $L’$ 与 $L$ 平行。</p>
-</li>
-<li><p><strong>平行直线的分离能力</strong>：由于 $A$ 和 $B$ 是线性可分的，这意味着可以找到一个间隔  $\epsilon$ 使得在直线  $L$的一侧存在一个空隙，其中没有任何点在此区域。换句话说，我们可以调整 $b$ 的值，使得新的直线 $L’$ 依然可以将 $A$ 和 $B$ 分开。</p>
-</li>
-<li><p><strong>无数条平行直线</strong>：由于 $b$ 可以在实数范围内任意取值，因此存在无数个不同的 $b$ 值，这意味着存在无数条平行直线可以将 $A$ 和 $B$ 分开。</p>
-</li>
-<li><p><strong>非平行直线</strong>：除了平行直线之外，我们还可以选择不同的斜率 $k’$。对任何新的斜率 $k’$，只要新的直线方程能够满足分离点集的条件，我们就可以调整其截距 $b’$ 使得新的直线 $y=k’x+b’$ 依然可以将 $A$ 和 $B$ 分开。</p>
-</li>
+<p>利用SMO算法求解最优化问题，得出 <span
+class="math inline">\(\alpha\)</span>, 下一步寻找一个 <span
+class="math inline">\(0&lt;\alpha_i&lt;0\)</span>，计算 <span
+class="math inline">\(b\)</span> :</p>
+<p>​ <span
+class="math inline">\(b=\frac{1}{y_i}-\sum_{i=1}^{N}\alpha_iy_iK(x_i,x)\)</span></p>
+<h4 id="svm算法测试过程">SVM算法：测试过程</h4>
+<p>输入样本 <span class="math inline">\(x\)</span>：</p>
+<ul>
+<li>若 <span
+class="math inline">\(\sum\limits_{i=1}^{N}\alpha_iy_iK(x_i,x)+b\geq0\)</span>,
+则 $ y=+1$,</li>
+<li>若 <span
+class="math inline">\(\sum\limits_{i=1}^{N}\alpha_iy_iK(x_i,x)+b&lt;0\)</span>,
+则 $ y=+1$.</li>
+</ul>
+<h2 id="附录">附录</h2>
+<h4 id="结论1证明">结论1证明：</h4>
+<h5 id="二维平面上的证明">二维平面上的证明</h5>
+<p>假设我们有两个点集 <span class="math inline">\(A\)</span> 和 <span
+class="math inline">\(B\)</span>，并且这两个点集是线性可分的。这意味着存在一条直线可以将这两个点集分开。为了证明存在无数条直线能够划分这两个点集，我们可以如下进行证明：</p>
+<ol type="1">
+<li><p><strong>存在一条直线</strong>：假设存在一条直线 <span
+class="math inline">\(L\)</span> 可以将点集 <span
+class="math inline">\(A\)</span> 和 <span
+class="math inline">\(B\)</span> 分开。直线 <span
+class="math inline">\(L\)</span> 可以表示为： <span
+class="math display">\[
+𝑦=k𝑥+b
+\]</span> 其中 <span class="math inline">\(k\)</span> 是斜率，<span
+class="math inline">\(b\)</span> 是截距。</p></li>
+<li><p><strong>平行直线的性质</strong>：对于任何一个固定的斜率
+𝑚<em>m</em>，不同的截距 𝑐<em>c</em>
+会产生不同的平行直线。设我们有另一条直线 𝐿′<em>L</em>′ 其方程为： <span
+class="math display">\[
+𝑦=𝑚𝑥+b^′
+\]</span> 其中 <span class="math inline">\(b&#39;\neq b\)</span>，则
+<span class="math inline">\(L&#39;\)</span> 与 <span
+class="math inline">\(L\)</span> 平行。</p></li>
+<li><p><strong>平行直线的分离能力</strong>：由于 <span
+class="math inline">\(A\)</span> 和 <span
+class="math inline">\(B\)</span> 是线性可分的，这意味着可以找到一个间隔
+<span class="math inline">\(\epsilon\)</span> 使得在直线 <span
+class="math inline">\(L\)</span>的一侧存在一个空隙，其中没有任何点在此区域。换句话说，我们可以调整
+<span class="math inline">\(b\)</span> 的值，使得新的直线 <span
+class="math inline">\(L&#39;\)</span> 依然可以将 <span
+class="math inline">\(A\)</span> 和 <span
+class="math inline">\(B\)</span> 分开。</p></li>
+<li><p><strong>无数条平行直线</strong>：由于 <span
+class="math inline">\(b\)</span>
+可以在实数范围内任意取值，因此存在无数个不同的 <span
+class="math inline">\(b\)</span> 值，这意味着存在无数条平行直线可以将
+<span class="math inline">\(A\)</span> 和 <span
+class="math inline">\(B\)</span> 分开。</p></li>
+<li><p><strong>非平行直线</strong>：除了平行直线之外，我们还可以选择不同的斜率
+<span class="math inline">\(k&#39;\)</span>。对任何新的斜率 <span
+class="math inline">\(k&#39;\)</span>，只要新的直线方程能够满足分离点集的条件，我们就可以调整其截距
+<span class="math inline">\(b&#39;\)</span> 使得新的直线 <span
+class="math inline">\(y=k&#39;x+b&#39;\)</span> 依然可以将 <span
+class="math inline">\(A\)</span> 和 <span
+class="math inline">\(B\)</span> 分开。</p></li>
 </ol>
-<h5 id="高维空间的推广"><a href="#高维空间的推广" class="headerlink" title="高维空间的推广"></a>高维空间的推广</h5><p>在高维空间中，能够分离点集的“直线”实际上是一个超平面。假设我们有两个点集 $A$ 和 $B$，并且它们是线性可分的，即存在一个超平面 $H$ 可以将它们分开。超平面方程可以表示为：</p>
-<script type="math/tex; mode=display">
-w\cdot x+b=0</script><p>其中 $w$ 是法向量，$b$ 是偏置项。</p>
-<ol>
-<li><strong>存在一个超平面</strong>：假设存在一个超平面 $H$ 可以将 $A$ 和 $B$ 分开。</li>
-<li><strong>平行超平面</strong>：对于任何固定的法向量 $w$，不同的偏置 $b$ 会产生不同的平行超平面。</li>
-<li><strong>无数个平行超平面</strong>：由于 $b$ 可以在实数范围内任意取值，因此存在无数个不同的 $b$ 值，这意味着存在无数个平行超平面可以将 𝐴<em>A</em> 和 𝐵<em>B</em> 分开。</li>
-<li><strong>非平行超平面</strong>：我们还可以选择不同的法向量 $w’$。对于任何新的法向量 $w’$，只要新的超平面方程能够满足分离点集的条件，我们就可以调整其偏置 $b$ 使得新的超平面 $w’\cdot x+b’=0$ 依然可以将 $A$ 和 $B$ 分开。</li>
+<h5 id="高维空间的推广">高维空间的推广</h5>
+<p>在高维空间中，能够分离点集的“直线”实际上是一个超平面。假设我们有两个点集
+<span class="math inline">\(A\)</span> 和 <span
+class="math inline">\(B\)</span>，并且它们是线性可分的，即存在一个超平面
+<span class="math inline">\(H\)</span>
+可以将它们分开。超平面方程可以表示为： <span class="math display">\[
+w\cdot x+b=0
+\]</span> 其中 <span class="math inline">\(w\)</span> 是法向量，<span
+class="math inline">\(b\)</span> 是偏置项。</p>
+<ol type="1">
+<li><strong>存在一个超平面</strong>：假设存在一个超平面 <span
+class="math inline">\(H\)</span> 可以将 <span
+class="math inline">\(A\)</span> 和 <span
+class="math inline">\(B\)</span> 分开。</li>
+<li><strong>平行超平面</strong>：对于任何固定的法向量 <span
+class="math inline">\(w\)</span>，不同的偏置 <span
+class="math inline">\(b\)</span> 会产生不同的平行超平面。</li>
+<li><strong>无数个平行超平面</strong>：由于 <span
+class="math inline">\(b\)</span>
+可以在实数范围内任意取值，因此存在无数个不同的 <span
+class="math inline">\(b\)</span> 值，这意味着存在无数个平行超平面可以将
+𝐴<em>A</em> 和 𝐵<em>B</em> 分开。</li>
+<li><strong>非平行超平面</strong>：我们还可以选择不同的法向量 <span
+class="math inline">\(w&#39;\)</span>。对于任何新的法向量 <span
+class="math inline">\(w&#39;\)</span>，只要新的超平面方程能够满足分离点集的条件，我们就可以调整其偏置
+<span class="math inline">\(b\)</span> 使得新的超平面 <span
+class="math inline">\(w&#39;\cdot x+b&#39;=0\)</span> 依然可以将 <span
+class="math inline">\(A\)</span> 和 <span
+class="math inline">\(B\)</span> 分开。</li>
 </ol>
-<h4 id="核函数"><a href="#核函数" class="headerlink" title="核函数"></a>核函数</h4><ul>
-<li><p>在实际应用时，映射函数 $\varphi(x)$ 不需要是已知的。换句话说，核技巧的目的就是在不需要显式地定义特征空间和映射函数的条件下，计算映射之后的内积</p>
-</li>
-<li><p>核函数 $K(x_1,x_2)=&lt;\varphi(x_1),\varphi(x_2)&gt;$ 需要满足的充要条件 (不需要 $\varphi(x)$ 已知) (<a href="[Mercer&#39;s theorem - Wikipedia](https://en.wikipedia.org/wiki/Mercer&#39;s_theorem">Mercer’s Theorem</a>)): </p>
+<h4 id="核函数">核函数</h4>
 <ul>
-<li><p>对称性: $K(x_1,x_2)=K(x_2,x_1)$</p>
-</li>
-<li><p>半正定性: 对于任意 $n$ 和任意 $x_1,x_2,\dots,x_n∈\mathcal{X}$，由 $K(x_i,x_j)$ 定义的 Gram matrix 总是半正定的，即</p>
-<script type="math/tex; mode=display">
-对于\forall C_i,x_i, (i=1，2,\dots,n),有 \sum_{i=1}^N\sum_{j=1}^NC_iC_jK(x_1,x_2)\geq0\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ C_i为任意实数，x_i为任意的向量.</script></li>
-</ul>
-</li>
-<li><p>只要 $K$ 是核函数，那么一定存在一个Hilbert space和一个映射函数 $\varphi(x)$，使得 $K(x_1,x_2)=&lt;\varphi(x_1),\varphi(x_2)&gt;$</p>
-</li>
+<li><p>在实际应用时，映射函数 <span
+class="math inline">\(\varphi(x)\)</span>
+不需要是已知的。换句话说，核技巧的目的就是在不需要显式地定义特征空间和映射函数的条件下，计算映射之后的内积</p></li>
+<li><p>核函数 <span
+class="math inline">\(K(x_1,x_2)=&lt;\varphi(x_1),\varphi(x_2)&gt;\)</span>
+需要满足的充要条件 (不需要 <span
+class="math inline">\(\varphi(x)\)</span> 已知) (<a
+href="%5BMercer&#39;s%20theorem%20-%20Wikipedia%5D(https://en.wikipedia.org/wiki/Mercer&#39;s_theorem)">Mercer's
+Theorem</a>):</p>
+<ul>
+<li><p>对称性: <span
+class="math inline">\(K(x_1,x_2)=K(x_2,x_1)\)</span></p></li>
+<li><p>半正定性: 对于任意 <span class="math inline">\(n\)</span> 和任意
+<span class="math inline">\(x_1,x_2,\dots,x_n∈\mathcal{X}\)</span>，由
+<span class="math inline">\(K(x_i,x_j)\)</span> 定义的 Gram matrix
+总是半正定的，即 <span class="math display">\[
+对于\forall C_i,x_i, (i=1，2,\dots,n),有
+\sum_{i=1}^N\sum_{j=1}^NC_iC_jK(x_1,x_2)\geq0\ \ \ \ \ \ \ \ \ \ \ \ \ \
+\ C_i为任意实数，x_i为任意的向量.
+\]</span></p></li>
+</ul></li>
+<li><p>只要 <span class="math inline">\(K\)</span>
+是核函数，那么一定存在一个Hilbert space和一个映射函数 <span
+class="math inline">\(\varphi(x)\)</span>，使得 <span
+class="math inline">\(K(x_1,x_2)=&lt;\varphi(x_1),\varphi(x_2)&gt;\)</span></p></li>
 <li><p>常见核函数</p>
-<p>| 名称       | 表达式                                              | 参数                                           |<br>| ————— | —————————————————————————- | ——————————————————————— |<br>| 线性核     | $K(x_1,x_2)=x_i^Tx_j$                               |                                                |<br>| 多项式核   | $K(x_1,x_2)=(x_i^Tx_j)^d$                           | $d\geq1$为多项式的次数                         |<br>| 高斯核     | $K(x_1,x_2)=\exp(-\frac{||x_i-x_j||^2}{2\sigma^2})$ | $\sigma&gt;0$，为高斯核的带宽 (width)             |<br>| 拉普拉斯核 | $K(x_1,x_2)=\exp(-\frac{||x_i-x_j||}{\sigma})$      | $\sigma&gt;0$                                     |<br>| Sigmoid核  | $K(x_1,x_2)=\tanh(\beta x_i^Tx_j+\theta)$           | $\tanh$ 为双曲正切函数，$\beta&gt;0,\ \ \theta&lt;0$ |</p>
-<h4 id="替代损失函数"><a href="#替代损失函数" class="headerlink" title="替代损失函数"></a>替代损失函数</h4><p>| 名称                            | 表达式                                |<br>| ———————————————- | ——————————————————- |<br>| hinge损失函数                   | $\mathscr{l}<em>{hinge}(z)=\max(0,1-z)$  |<br>| 指数损失函数 (exponential loss) | $\mathscr{l}</em>{exp}(z)=\exp(-z)$       |<br>| 对率损失 (logistic loss)        | $\mathscr{l}_log(z)=\log(1+\exp(-z))$ |</p>
+<table>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 47%" />
+<col style="width: 42%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>名称</th>
+<th>表达式</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>线性核</td>
+<td><span class="math inline">\(K(x_1,x_2)=x_i^Tx_j\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>多项式核</td>
+<td><span class="math inline">\(K(x_1,x_2)=(x_i^Tx_j)^d\)</span></td>
+<td><span class="math inline">\(d\geq1\)</span>为多项式的次数</td>
+</tr>
+<tr class="odd">
+<td>高斯核</td>
+<td><span
+class="math inline">\(K(x_1,x_2)=\exp(-\frac{||x_i-x_j||^2}{2\sigma^2})\)</span></td>
+<td><span class="math inline">\(\sigma&gt;0\)</span>，为高斯核的带宽
+(width)</td>
+</tr>
+<tr class="even">
+<td>拉普拉斯核</td>
+<td><span
+class="math inline">\(K(x_1,x_2)=\exp(-\frac{||x_i-x_j||}{\sigma})\)</span></td>
+<td><span class="math inline">\(\sigma&gt;0\)</span></td>
+</tr>
+<tr class="odd">
+<td>Sigmoid核</td>
+<td><span class="math inline">\(K(x_1,x_2)=\tanh(\beta
+x_i^Tx_j+\theta)\)</span></td>
+<td><span class="math inline">\(\tanh\)</span> 为双曲正切函数，<span
+class="math inline">\(\beta&gt;0,\ \ \theta&lt;0\)</span></td>
+</tr>
+</tbody>
+</table>
+<h4 id="替代损失函数">替代损失函数</h4>
+<table>
+<colgroup>
+<col style="width: 45%" />
+<col style="width: 54%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>名称</th>
+<th>表达式</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>hinge损失函数</td>
+<td><span
+class="math inline">\(\mathscr{l}_{hinge}(z)=\max(0,1-z)\)</span></td>
+</tr>
+<tr class="even">
+<td>指数损失函数 (exponential loss)</td>
+<td><span
+class="math inline">\(\mathscr{l}_{exp}(z)=\exp(-z)\)</span></td>
+</tr>
+<tr class="odd">
+<td>对率损失 (logistic loss)</td>
+<td><span
+class="math inline">\(\mathscr{l}_log(z)=\log(1+\exp(-z))\)</span></td>
+</tr>
+</tbody>
+</table>
 <p><img src="https://imgur.la/images/2024/06/04/surrogate_loss.png" alt="surrogate loss" border="0" style="zoom: 5%;" ></p>
-<center><p>图5：三种常见的替代损失函数: hinge损失、指数损失、对率损失</p></center>
-
-</li>
+<center>
+<p>
+<p>图7：三种常见的替代损失函数: hinge损失、指数损失、对率损失</p>
+</p>
+</center></li>
 </ul>
-<h4 id="优化理论：原问题与对偶问题"><a href="#优化理论：原问题与对偶问题" class="headerlink" title="优化理论：原问题与对偶问题"></a>优化理论：原问题与对偶问题</h4><p><strong>1. 原问题 (Prime Problem)</strong></p>
+<h4 id="优化理论原问题与对偶问题">优化理论：原问题与对偶问题</h4>
+<p><strong>1. 原问题 (Prime Problem)</strong></p>
 <ul>
-<li>最小化 (Minimize) : $f(w)$</li>
-<li>限制条件 (Subject to) : <ul>
-<li>$g_i(w)\leq0 \ \ \ \ (i=1,2,\dots,K)$</li>
-<li>$h_i(w)=0 \ \ \ \ (i=1,2,\dots,M)$</li>
+<li>最小化 (Minimize) : <span class="math inline">\(f(w)\)</span></li>
+<li>限制条件 (Subject to) :
+<ul>
+<li><span class="math inline">\(g_i(w)\leq0 \ \ \ \
+(i=1,2,\dots,K)\)</span></li>
+<li><span class="math inline">\(h_i(w)=0 \ \ \ \
+(i=1,2,\dots,M)\)</span></li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<p>对原问题使用拉格朗日乘子法可以得到其”对偶问题”</p>
-<script type="math/tex; mode=display">
+<p>对原问题使用拉格朗日乘子法可以得到其"对偶问题" <span
+class="math display">\[
 \begin{align}
-&L(w,\alpha,\beta) \\
-=&f(w)+\sum \limits_{i=1}^{K}\alpha_ig_i(w)+\sum \limits_{i=1}^{M}\beta_ih_i(w) \\
-=&f(w)+\alpha^Tg(w)+\beta^Th(w)
-\end{align}</script><p>根据您上述过程，我们可以得到原问题的对偶问题：</p>
+&amp;L(w,\alpha,\beta) \\
+=&amp;f(w)+\sum \limits_{i=1}^{K}\alpha_ig_i(w)+\sum
+\limits_{i=1}^{M}\beta_ih_i(w) \\
+=&amp;f(w)+\alpha^Tg(w)+\beta^Th(w)
+\end{align}
+\]</span> 根据您上述过程，我们可以得到原问题的对偶问题：</p>
 <p><strong>2. 对偶问题 (Dual Problem)</strong></p>
 <ul>
-<li>最大化 (Maximum) : $\theta(\alpha,\beta)=\inf{L(w,\alpha,\beta)}$</li>
-<li>限制条件 (Subject to) : <ul>
-<li>$\alpha_i\geq0 \ \ \ \ (i=1,2,\dots,K)$</li>
-</ul>
-</li>
+<li>最大化 (Maximum) : <span
+class="math inline">\(\theta(\alpha,\beta)=\inf\{L(w,\alpha,\beta)\}\)</span></li>
+<li>限制条件 (Subject to) :
+<ul>
+<li><span class="math inline">\(\alpha_i\geq0 \ \ \ \
+(i=1,2,\dots,K)\)</span></li>
+</ul></li>
 </ul>
 <p><strong>解释：</strong></p>
-<p>其中 $\inf{L(w,\alpha,\beta)}$ 表示在限定的 $\alpha,\beta$ 的条件下，遍历所有的 $w$，求 $L(w,\alpha,\beta)$ 的最小值。因此对于每确定的一组 $\alpha,\beta$ 都可以算出 $L(w,\alpha,\beta)$ 的最小值。而我们此时要找的就是所有的能算出 $L(w,\alpha,\beta)$ 最小值的 $\alpha,\beta$ 中最大的那一组 $\alpha,\beta$。</p>
+<p>其中 <span class="math inline">\(\inf\{L(w,\alpha,\beta)\}\)</span>
+表示在限定的 <span class="math inline">\(\alpha,\beta\)</span>
+的条件下，遍历所有的 <span class="math inline">\(w\)</span>，求 <span
+class="math inline">\(L(w,\alpha,\beta)\)</span>
+的最小值。因此对于每确定的一组 <span
+class="math inline">\(\alpha,\beta\)</span> 都可以算出 <span
+class="math inline">\(L(w,\alpha,\beta)\)</span>
+的最小值。而我们此时要找的就是所有的能算出 <span
+class="math inline">\(L(w,\alpha,\beta)\)</span> 最小值的 <span
+class="math inline">\(\alpha,\beta\)</span> 中最大的那一组 <span
+class="math inline">\(\alpha,\beta\)</span>。</p>
 <p><strong>3. 将原问题的解转化为对偶问题的解</strong></p>
-<p><strong>定理：</strong>如果 $w^<em>$是原问题的解，而$\alpha^</em>,\beta^<em>$是对偶问题的解，则有$f(w^</em>)\geq\theta(\alpha^<em>,\beta^</em>)$</p>
-<p>证明：(其中 $\alpha^<em>\geq0, \ \ g_i(w^</em>)\leq0, \ \ h_i(w)=0$)</p>
-<script type="math/tex; mode=display">
+<p><strong>定理：</strong>如果 <span
+class="math inline">\(w^*\)</span>是原问题的解，而<span
+class="math inline">\(\alpha^*,\beta^*\)</span>是对偶问题的解，则有<span
+class="math inline">\(f(w^*)\geq\theta(\alpha^*,\beta^*)\)</span></p>
+<p>证明：(其中 <span class="math inline">\(\alpha^*\geq0, \ \
+g_i(w^*)\leq0, \ \ h_i(w)=0\)</span>) <span class="math display">\[
 \begin{align}
-\theta(\alpha^*,\beta^*)&=\inf\{L(w,\alpha^*,\beta^*)\} \\
-&\leq L(w^*,\alpha^*,\beta^*) \\
-&=f(w^*)+\sum \limits_{i=1}^{K}\alpha_i^*g_i(w^*)+\sum \limits_{i=1}^{M}\beta_i^*h_i(w^*) \\
-&\leq f(w^*)
-\end{align}</script><p><strong>定义：</strong>$G=f(\omega^<em>)-\theta(\alpha^</em>,\beta^*)\geq0$,  $G$ 为原问题与对偶问题的间距 (Duality Gap)。</p>
-<p><strong>强对偶定理：</strong>若 $f(w)$ 为凸函数，且 $g(w)=aw+b, \ \ h(w)=cw+d$ (即其约束条件均为线性函数), 则此优化问题得原问题与对偶问题的对偶间距 $G=0$.</p>
-<p>由强对偶性定理得：</p>
-<script type="math/tex; mode=display">
-f(w^*)=\theta(\alpha^*,\beta^*)</script><p>此时意味着，对于  $\forall i=1,2,\dots,K.$ 则有 $\alpha_i^<em>=0$ 或者 $g_i(w^</em>)=0$ .  <strong>——KKT条件</strong>  </p>
-<hr>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><blockquote>
+\theta(\alpha^*,\beta^*)&amp;=\inf\{L(w,\alpha^*,\beta^*)\} \\
+&amp;\leq L(w^*,\alpha^*,\beta^*) \\
+&amp;=f(w^*)+\sum \limits_{i=1}^{K}\alpha_i^*g_i(w^*)+\sum
+\limits_{i=1}^{M}\beta_i^*h_i(w^*) \\
+&amp;\leq f(w^*)
+\end{align}
+\]</span> <strong>定义：</strong><span
+class="math inline">\(G=f(\omega^*)-\theta(\alpha^*,\beta^*)\geq0\)</span>,
+<span class="math inline">\(G\)</span> 为原问题与对偶问题的间距 (Duality
+Gap)。</p>
+<p><strong>强对偶定理：</strong>若 <span
+class="math inline">\(f(w)\)</span> 为凸函数，且 <span
+class="math inline">\(g(w)=aw+b, \ \ h(w)=cw+d\)</span>
+(即其约束条件均为线性函数), 则此优化问题得原问题与对偶问题的对偶间距
+<span class="math inline">\(G=0\)</span>.</p>
+<p>由强对偶性定理得： <span class="math display">\[
+f(w^*)=\theta(\alpha^*,\beta^*)
+\]</span> 此时意味着，对于 <span class="math inline">\(\forall
+i=1,2,\dots,K.\)</span> 则有 <span
+class="math inline">\(\alpha_i^*=0\)</span> 或者 <span
+class="math inline">\(g_i(w^*)=0\)</span> .
+<strong>——KKT条件</strong></p>
+<hr />
+<h2 id="references">References</h2>
+<blockquote>
 <p>[1] 周志华，机器学习，清华大学出版社，2016</p>
-<p>[2] Boyd S P, Vandenberghe L. Convex optimization[M]. Cambridge university press, 2004.</p>
-<p>[3] Cortes C, Vapnik V. Support-vector networks[J]. Machine learning, 1995, 20: 273-297.</p>
-<p>[4] Ruszczyński A P. Nonlinear optimization[M]. Princeton university press, 2006.</p>
+<p>[2] Boyd S P, Vandenberghe L. Convex optimization[M]. Cambridge
+university press, 2004.</p>
+<p>[3] Cortes C, Vapnik V. Support-vector networks[J]. Machine learning,
+1995, 20: 273-297.</p>
+<p>[4] Ruszczyński A P. Nonlinear optimization[M]. Princeton university
+press, 2006.</p>
 </blockquote>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://junlei-zhou.com">坚竹韧周</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://junlei-zhou.com/2024/05/29/Support-Vector-Machine/">http://junlei-zhou.com/2024/05/29/Support-Vector-Machine/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Machine-Learning/">Machine Learning</a><a class="post-meta__tags" href="/tags/Supervised-machine-learning/">Supervised machine learning</a><a class="post-meta__tags" href="/tags/Convex-optimization/">Convex optimization</a><a class="post-meta__tags" href="/tags/Dural-Problem/">Dural Problem</a></div><div class="post_share"><div class="social-share" data-image="/img/avatar.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/12/27/markov-process/" title="markov_process"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next</div><div class="next_info">markov_process</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">坚竹韧周</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/JunLei01"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/JunLei01" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:zjunlei1225@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA-Support-Vector-Machine"><span class="toc-number">1.</span> <span class="toc-text">支持向量机 (Support Vector Machine)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%8F%AF%E5%88%86-Linear-S"><span class="toc-number">1.2.</span> <span class="toc-text">线性可分 (Linear S)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E5%AE%9A%E4%B9%89"><span class="toc-number">1.2.0.1.</span> <span class="toc-text">问题定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E5%AE%9A%E4%B9%89"><span class="toc-number">1.2.0.2.</span> <span class="toc-text">数学定义</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SVM%E8%A7%A3%E5%86%B3%E7%BA%BF%E6%80%A7%E9%97%AE%E9%A2%98"><span class="toc-number">1.3.</span> <span class="toc-text">SVM解决线性问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E9%97%AE%E9%A2%98%E5%AE%9A%E4%B9%89"><span class="toc-number">1.3.0.1.</span> <span class="toc-text">线性问题定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SVM%E5%9F%BA%E6%9C%AC%E5%9E%8B"><span class="toc-number">1.3.0.2.</span> <span class="toc-text">SVM基本型</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SVM%E8%A7%A3%E5%86%B3%E9%9D%9E%E7%BA%BF%E6%80%A7%E9%97%AE%E9%A2%98"><span class="toc-number">1.4.</span> <span class="toc-text">SVM解决非线性问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%9E%E7%BA%BF%E6%80%A7%E5%8F%AF%E5%88%86"><span class="toc-number">1.4.0.1.</span> <span class="toc-text">非线性可分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%9E%E7%BA%BF%E6%80%A7SVM%E4%BC%98%E5%8C%96"><span class="toc-number">1.4.0.2.</span> <span class="toc-text">非线性SVM优化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E9%9D%9E%E7%BA%BF%E6%80%A7SVM%E7%9A%84%E4%BC%98%E5%8C%96%E9%97%AE%E9%A2%98"><span class="toc-number">1.4.0.3.</span> <span class="toc-text">解非线性SVM的优化问题</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E9%9D%9E%E7%BA%BF%E6%80%A7SVM%E4%BC%98%E5%8C%96-%E8%BD%AC%E6%8D%A2%E5%90%8E"><span class="toc-number">1.4.0.3.0.1.</span> <span class="toc-text">非线性SVM优化 (转换后)</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E9%9D%9E%E7%BA%BF%E6%80%A7SVM%E4%BC%98%E5%8C%96%E9%97%AE%E9%A2%98%E7%9A%84%E5%AF%B9%E5%81%B6%E9%97%AE%E9%A2%98"><span class="toc-number">1.4.0.3.0.2.</span> <span class="toc-text">非线性SVM优化问题的对偶问题</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E9%9D%9E%E7%BA%BF%E6%80%A7SVM%E4%BC%98%E5%8C%96%E9%97%AE%E9%A2%98%E7%9A%84%E5%AF%B9%E5%81%B6%E9%97%AE%E9%A2%98-%E6%B1%82%E8%A7%A3%E5%90%8E"><span class="toc-number">1.4.0.3.0.3.</span> <span class="toc-text">非线性SVM优化问题的对偶问题 (求解后)</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.5.</span> <span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#SVM%E7%AE%97%E6%B3%95%EF%BC%9A%E8%AE%AD%E7%BB%83%E8%BF%87%E7%A8%8B"><span class="toc-number">1.5.0.1.</span> <span class="toc-text">SVM算法：训练过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SVM%E7%AE%97%E6%B3%95%EF%BC%9A%E6%B5%8B%E8%AF%95%E8%BF%87%E7%A8%8B"><span class="toc-number">1.5.0.2.</span> <span class="toc-text">SVM算法：测试过程</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%84%E5%BD%95"><span class="toc-number">1.6.</span> <span class="toc-text">附录</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA1%E8%AF%81%E6%98%8E%EF%BC%9A"><span class="toc-number">1.6.0.1.</span> <span class="toc-text">结论1证明：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E7%BB%B4%E5%B9%B3%E9%9D%A2%E4%B8%8A%E7%9A%84%E8%AF%81%E6%98%8E"><span class="toc-number">1.6.0.1.1.</span> <span class="toc-text">二维平面上的证明</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%AB%98%E7%BB%B4%E7%A9%BA%E9%97%B4%E7%9A%84%E6%8E%A8%E5%B9%BF"><span class="toc-number">1.6.0.1.2.</span> <span class="toc-text">高维空间的推广</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%B8%E5%87%BD%E6%95%B0"><span class="toc-number">1.6.0.2.</span> <span class="toc-text">核函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9B%BF%E4%BB%A3%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="toc-number">1.6.0.3.</span> <span class="toc-text">替代损失函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E7%90%86%E8%AE%BA%EF%BC%9A%E5%8E%9F%E9%97%AE%E9%A2%98%E4%B8%8E%E5%AF%B9%E5%81%B6%E9%97%AE%E9%A2%98"><span class="toc-number">1.6.0.4.</span> <span class="toc-text">优化理论：原问题与对偶问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">1.7.</span> <span class="toc-text">References</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/05/29/Support-Vector-Machine/" title="Support-Vector-Machine">Support-Vector-Machine</a><time datetime="2024-05-29T07:56:16.000Z" title="Created 2024-05-29 15:56:16">2024-05-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/27/markov-process/" title="markov_process">markov_process</a><time datetime="2023-12-27T09:33:42.000Z" title="Created 2023-12-27 17:33:42">2023-12-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/08/hello-world/" title="Hello World">Hello World</a><time datetime="2023-12-08T12:50:07.908Z" title="Created 2023-12-08 20:50:07">2023-12-08</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By 坚竹韧周</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://junlei-zhou.com">坚竹韧周</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://junlei-zhou.com/2024/05/29/Support-Vector-Machine/">http://junlei-zhou.com/2024/05/29/Support-Vector-Machine/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Machine-Learning/">Machine Learning</a><a class="post-meta__tags" href="/tags/Supervised-machine-learning/">Supervised machine learning</a><a class="post-meta__tags" href="/tags/Convex-optimization/">Convex optimization</a><a class="post-meta__tags" href="/tags/Dural-Problem/">Dural Problem</a></div><div class="post_share"><div class="social-share" data-image="/img/avatar.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/12/27/markov-process/" title="markov_process"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next</div><div class="next_info">markov_process</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">坚竹韧周</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/JunLei01"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/JunLei01" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:zjunlei1225@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA-support-vector-machine"><span class="toc-number">1.</span> <span class="toc-text">支持向量机 (Support Vector
+Machine)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%8F%AF%E5%88%86-linear-s"><span class="toc-number">1.2.</span> <span class="toc-text">线性可分 (Linear S)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E5%AE%9A%E4%B9%89"><span class="toc-number">1.2.0.1.</span> <span class="toc-text">问题定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E5%AE%9A%E4%B9%89"><span class="toc-number">1.2.0.2.</span> <span class="toc-text">数学定义</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#svm%E8%A7%A3%E5%86%B3%E7%BA%BF%E6%80%A7%E9%97%AE%E9%A2%98"><span class="toc-number">1.3.</span> <span class="toc-text">SVM解决线性问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E9%97%AE%E9%A2%98%E5%AE%9A%E4%B9%89"><span class="toc-number">1.3.0.1.</span> <span class="toc-text">线性问题定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#svm%E5%9F%BA%E6%9C%AC%E5%9E%8B"><span class="toc-number">1.3.0.2.</span> <span class="toc-text">SVM基本型</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#svm%E8%A7%A3%E5%86%B3%E9%9D%9E%E7%BA%BF%E6%80%A7%E9%97%AE%E9%A2%98"><span class="toc-number">1.4.</span> <span class="toc-text">SVM解决非线性问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%9E%E7%BA%BF%E6%80%A7%E5%8F%AF%E5%88%86"><span class="toc-number">1.4.0.1.</span> <span class="toc-text">非线性可分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%9E%E7%BA%BF%E6%80%A7svm%E4%BC%98%E5%8C%96"><span class="toc-number">1.4.0.2.</span> <span class="toc-text">非线性SVM优化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E9%9D%9E%E7%BA%BF%E6%80%A7svm%E7%9A%84%E4%BC%98%E5%8C%96%E9%97%AE%E9%A2%98"><span class="toc-number">1.4.0.3.</span> <span class="toc-text">解非线性SVM的优化问题</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E9%9D%9E%E7%BA%BF%E6%80%A7svm%E4%BC%98%E5%8C%96-%E8%BD%AC%E6%8D%A2%E5%90%8E"><span class="toc-number">1.4.0.3.0.1.</span> <span class="toc-text">非线性SVM优化 (转换后)</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E9%9D%9E%E7%BA%BF%E6%80%A7svm%E4%BC%98%E5%8C%96%E9%97%AE%E9%A2%98%E7%9A%84%E5%AF%B9%E5%81%B6%E9%97%AE%E9%A2%98"><span class="toc-number">1.4.0.3.0.2.</span> <span class="toc-text">非线性SVM优化问题的对偶问题</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E9%9D%9E%E7%BA%BF%E6%80%A7svm%E4%BC%98%E5%8C%96%E9%97%AE%E9%A2%98%E7%9A%84%E5%AF%B9%E5%81%B6%E9%97%AE%E9%A2%98-%E6%B1%82%E8%A7%A3%E5%90%8E"><span class="toc-number">1.4.0.3.0.3.</span> <span class="toc-text">非线性SVM优化问题的对偶问题
+(求解后)</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.5.</span> <span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#svm%E7%AE%97%E6%B3%95%E8%AE%AD%E7%BB%83%E8%BF%87%E7%A8%8B"><span class="toc-number">1.5.0.1.</span> <span class="toc-text">SVM算法：训练过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#svm%E7%AE%97%E6%B3%95%E6%B5%8B%E8%AF%95%E8%BF%87%E7%A8%8B"><span class="toc-number">1.5.0.2.</span> <span class="toc-text">SVM算法：测试过程</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%84%E5%BD%95"><span class="toc-number">1.6.</span> <span class="toc-text">附录</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA1%E8%AF%81%E6%98%8E"><span class="toc-number">1.6.0.1.</span> <span class="toc-text">结论1证明：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E7%BB%B4%E5%B9%B3%E9%9D%A2%E4%B8%8A%E7%9A%84%E8%AF%81%E6%98%8E"><span class="toc-number">1.6.0.1.1.</span> <span class="toc-text">二维平面上的证明</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%AB%98%E7%BB%B4%E7%A9%BA%E9%97%B4%E7%9A%84%E6%8E%A8%E5%B9%BF"><span class="toc-number">1.6.0.1.2.</span> <span class="toc-text">高维空间的推广</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%B8%E5%87%BD%E6%95%B0"><span class="toc-number">1.6.0.2.</span> <span class="toc-text">核函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9B%BF%E4%BB%A3%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="toc-number">1.6.0.3.</span> <span class="toc-text">替代损失函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E7%90%86%E8%AE%BA%E5%8E%9F%E9%97%AE%E9%A2%98%E4%B8%8E%E5%AF%B9%E5%81%B6%E9%97%AE%E9%A2%98"><span class="toc-number">1.6.0.4.</span> <span class="toc-text">优化理论：原问题与对偶问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#references"><span class="toc-number">1.7.</span> <span class="toc-text">References</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/05/29/Support-Vector-Machine/" title="Support-Vector-Machine">Support-Vector-Machine</a><time datetime="2024-05-29T07:56:16.000Z" title="Created 2024-05-29 15:56:16">2024-05-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/27/markov-process/" title="markov_process">markov_process</a><time datetime="2023-12-27T09:33:42.000Z" title="Created 2023-12-27 17:33:42">2023-12-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/08/hello-world/" title="Hello World">Hello World</a><time datetime="2023-12-08T12:50:07.908Z" title="Created 2023-12-08 20:50:07">2023-12-08</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By 坚竹韧周</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
