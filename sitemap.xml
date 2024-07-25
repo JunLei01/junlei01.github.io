@@ -2,9 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://junlei-zhou.com/2024/07/25/transformer-description/</loc>
+    
+    <lastmod>2024-07-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://junlei-zhou.com/2024/06/19/Mamba/</loc>
     
-    <lastmod>2024-06-20</lastmod>
+    <lastmod>2024-06-28</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -13,7 +22,7 @@
   <url>
     <loc>http://junlei-zhou.com/2024/06/20/symbols/</loc>
     
-    <lastmod>2024-06-20</lastmod>
+    <lastmod>2024-06-21</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -94,7 +103,7 @@
 
   <url>
     <loc>http://junlei-zhou.com/</loc>
-    <lastmod>2024-06-20</lastmod>
+    <lastmod>2024-07-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -102,49 +111,49 @@
   
   <url>
     <loc>http://junlei-zhou.com/tags/Machine-Learning/</loc>
-    <lastmod>2024-06-20</lastmod>
+    <lastmod>2024-07-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://junlei-zhou.com/tags/Supervised-machine-learning/</loc>
-    <lastmod>2024-06-20</lastmod>
+    <lastmod>2024-07-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://junlei-zhou.com/tags/Convex-optimization/</loc>
-    <lastmod>2024-06-20</lastmod>
+    <lastmod>2024-07-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://junlei-zhou.com/tags/Dural-Problem/</loc>
-    <lastmod>2024-06-20</lastmod>
+    <lastmod>2024-07-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://junlei-zhou.com/tags/Deep-Learning/</loc>
-    <lastmod>2024-06-20</lastmod>
+    <lastmod>2024-07-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://junlei-zhou.com/tags/Sequence-Model/</loc>
-    <lastmod>2024-06-20</lastmod>
+    <lastmod>2024-07-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://junlei-zhou.com/tags/State-space-model/</loc>
-    <lastmod>2024-06-20</lastmod>
+    <lastmod>2024-07-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
