@@ -1,6 +1,6 @@
+http://junlei-zhou.com/2024/06/20/symbols/
 http://junlei-zhou.com/2024/07/25/transformer-description/
 http://junlei-zhou.com/2024/06/19/Mamba/
-http://junlei-zhou.com/2024/06/20/symbols/
 http://junlei-zhou.com/2024/05/29/Support-Vector-Machine/
 http://junlei-zhou.com/2023/12/27/markov-process/
 http://junlei-zhou.com/Blog/index.html
@@ -17,3 +17,6 @@ http://junlei-zhou.com/tags/Dural-Problem/
 http://junlei-zhou.com/tags/Deep-Learning/
 http://junlei-zhou.com/tags/Sequence-Model/
 http://junlei-zhou.com/tags/State-space-model/
+http://junlei-zhou.com/tags/LaTex/
+http://junlei-zhou.com/tags/MarkDown/
+http://junlei-zhou.com/tags/Deep-Learning-Knowledge/
