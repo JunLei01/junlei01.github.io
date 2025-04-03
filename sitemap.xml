@@ -2,6 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://junlei-zhou.com/2025/04/03/Diffusion-Interviews/</loc>
+    
+    <lastmod>2025-04-03</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://junlei-zhou.com/2024/07/25/transformer-description/</loc>
+    
+    <lastmod>2025-04-01</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://junlei-zhou.com/2024/06/20/symbols/</loc>
+    
+    <lastmod>2025-02-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://junlei-zhou.com/2024/05/29/Support-Vector-Machine/</loc>
     
     <lastmod>2025-02-25</lastmod>
@@ -14,24 +41,6 @@
     <loc>http://junlei-zhou.com/2024/06/19/Mamba/</loc>
     
     <lastmod>2025-02-25</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://junlei-zhou.com/2024/07/25/transformer-description/</loc>
-    
-    <lastmod>2025-02-25</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://junlei-zhou.com/2024/06/20/symbols/</loc>
-    
-    <lastmod>2024-07-26</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -103,7 +112,7 @@
 
   <url>
     <loc>http://junlei-zhou.com/</loc>
-    <lastmod>2025-02-25</lastmod>
+    <lastmod>2025-04-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -111,70 +120,70 @@
   
   <url>
     <loc>http://junlei-zhou.com/tags/Machine-Learning/</loc>
-    <lastmod>2025-02-25</lastmod>
+    <lastmod>2025-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://junlei-zhou.com/tags/Supervised-machine-learning/</loc>
-    <lastmod>2025-02-25</lastmod>
+    <lastmod>2025-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://junlei-zhou.com/tags/Convex-optimization/</loc>
-    <lastmod>2025-02-25</lastmod>
+    <lastmod>2025-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://junlei-zhou.com/tags/Dural-Problem/</loc>
-    <lastmod>2025-02-25</lastmod>
+    <lastmod>2025-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://junlei-zhou.com/tags/Deep-Learning/</loc>
-    <lastmod>2025-02-25</lastmod>
+    <lastmod>2025-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://junlei-zhou.com/tags/Sequence-Model/</loc>
-    <lastmod>2025-02-25</lastmod>
+    <lastmod>2025-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://junlei-zhou.com/tags/State-space-model/</loc>
-    <lastmod>2025-02-25</lastmod>
+    <lastmod>2025-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://junlei-zhou.com/tags/LaTex/</loc>
-    <lastmod>2025-02-25</lastmod>
+    <lastmod>2025-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://junlei-zhou.com/tags/MarkDown/</loc>
-    <lastmod>2025-02-25</lastmod>
+    <lastmod>2025-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://junlei-zhou.com/tags/Deep-Learning-Knowledge/</loc>
-    <lastmod>2025-02-25</lastmod>
+    <lastmod>2025-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
