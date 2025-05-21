@@ -2,9 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://junlei-zhou.com/2025/05/21/IELTS-Speaking/</loc>
+    
+    <lastmod>2025-05-21</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://junlei-zhou.com/2025/04/03/Diffusion-Interviews/</loc>
     
-    <lastmod>2025-04-05</lastmod>
+    <lastmod>2025-04-07</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -112,7 +121,7 @@
 
   <url>
     <loc>http://junlei-zhou.com/</loc>
-    <lastmod>2025-04-05</lastmod>
+    <lastmod>2025-05-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -120,70 +129,70 @@
   
   <url>
     <loc>http://junlei-zhou.com/tags/Machine-Learning/</loc>
-    <lastmod>2025-04-05</lastmod>
+    <lastmod>2025-05-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://junlei-zhou.com/tags/Supervised-machine-learning/</loc>
-    <lastmod>2025-04-05</lastmod>
+    <lastmod>2025-05-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://junlei-zhou.com/tags/Convex-optimization/</loc>
-    <lastmod>2025-04-05</lastmod>
+    <lastmod>2025-05-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://junlei-zhou.com/tags/Dural-Problem/</loc>
-    <lastmod>2025-04-05</lastmod>
+    <lastmod>2025-05-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://junlei-zhou.com/tags/Deep-Learning/</loc>
-    <lastmod>2025-04-05</lastmod>
+    <lastmod>2025-05-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://junlei-zhou.com/tags/Sequence-Model/</loc>
-    <lastmod>2025-04-05</lastmod>
+    <lastmod>2025-05-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://junlei-zhou.com/tags/State-space-model/</loc>
-    <lastmod>2025-04-05</lastmod>
+    <lastmod>2025-05-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://junlei-zhou.com/tags/LaTex/</loc>
-    <lastmod>2025-04-05</lastmod>
+    <lastmod>2025-05-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://junlei-zhou.com/tags/MarkDown/</loc>
-    <lastmod>2025-04-05</lastmod>
+    <lastmod>2025-05-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://junlei-zhou.com/tags/Deep-Learning-Knowledge/</loc>
-    <lastmod>2025-04-05</lastmod>
+    <lastmod>2025-05-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
